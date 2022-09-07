@@ -18,4 +18,3 @@ The initial parameters, including simulation length, pendulum angle and velocity
 
 https://user-images.githubusercontent.com/24758117/188962309-ee423378-844a-433e-910a-6b273f161ebf.mp4
 
-
