@@ -24,3 +24,5 @@ Models and animates a double pendulum without a controller or any friction force
 
 The initial parameters, including simulation length, pendulum angles, lengths, masses, and velocities, can all be changed in the ```__init__``` function of the ```DoublePendulum``` class. The animation can be displayed, saved, or both by changing the parameters of the ```main``` function.
 
+https://user-images.githubusercontent.com/24758117/189504545-333fe709-f0cd-4343-ad4a-5de4c7616d99.mp4
+
