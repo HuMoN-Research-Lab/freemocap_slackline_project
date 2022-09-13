@@ -30,3 +30,5 @@ A very similar cart and pendulum system to CartAndPendulum.py, but with a horizo
 
 The initial parameters, including spring constant, system mass, pendulum angle and velocity, cart position and velocity, and desired cart position, can all be changed in the ```__init__``` function of the ```Pendulum``` class. The PID controller can be altered by changing the gains in the ```set_pid_gains``` function of the ```Pendulum``` class. The animation can be displayed, saved, or both by changing the parameters of the ```main``` function.
 
+https://user-images.githubusercontent.com/24758117/189793095-8fa1844b-6de6-453a-bd30-e3aaa5d63fc9.mp4
+
