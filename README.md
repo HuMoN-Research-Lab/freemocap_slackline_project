@@ -24,3 +24,9 @@ Models and animates a double pendulum without a controller or any friction force
 
 The initial parameters, including simulation length, pendulum angles, lengths, masses, and velocities, can all be changed in the ```__init__``` function of the ```DoublePendulum``` class. The animation can be displayed, saved, or both by changing the parameters of the ```main``` function.
 
+## SpringedCartAndPendulum.py
+
+A very similar cart and pendulum system to CartAndPendulum.py, but with a horizontal spring attached to the cart, which pulls on the cart back towards the origin. The cart is controlled with a PD controller, and within a range of spring constants is still able to balance the pendulum. A derivation of simulation parameters related to the spring is given in SpringedCartAndPendulumJustification.md. 
+
+The initial parameters, including spring constant, system mass, pendulum angle and velocity, cart position and velocity, and desired cart position, can all be changed in the ```__init__``` function of the ```Pendulum``` class. The PID controller can be altered by changing the gains in the ```set_pid_gains``` function of the ```Pendulum``` class. The animation can be displayed, saved, or both by changing the parameters of the ```main``` function.
+
