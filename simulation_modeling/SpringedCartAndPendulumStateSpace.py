@@ -8,6 +8,8 @@ from mpl_toolkits import mplot3d
 from matplotlib.animation import FuncAnimation
 from scipy.integrate import odeint
 
+plt.rcParams['animation.ffmpeg_path'] = '/Users/philipqueen/opt/anaconda3/lib/python3.9/site-packages/ffmpeg'
+
 mpl.use('tkagg') # had to add this because plt.show() was crashing due to "segmentation fault:11" 
 
 '''Cart and pendulum simulation made using scipy's ODE solver. Main structure taken from ODEPendulum.py.
@@ -80,7 +82,7 @@ class Pendulum:
 
         self.state_space_trace_length = 20
 
-        self.plot_state_space_shadow, = self.ax2.plot(self.pendulum_displacement, self.pendulum_displacement_velocity, zorder=1, color="plum")
+        self.plot_state_space_shadow, = self.ax2.plot(self.pendulum_displacement[1:], self.pendulum_displacement_velocity[1:], zorder=1, color="plum")
         self.state_space_center_line = self.ax2.axvline(0, ls='-', color='black', lw=1, zorder=1, label="Base of Support (Cart Location)")
         self.plot_state_space_trace, = self.ax2.plot(self.pendulum_displacement[0], self.pendulum_displacement_velocity[0], zorder=2, color="purple")
         self.scatter_state_space = self.ax2.scatter(self.pendulum_displacement[0], self.pendulum_displacement_velocity[0], zorder=3, color="purple")
