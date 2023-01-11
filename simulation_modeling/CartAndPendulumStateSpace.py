@@ -110,7 +110,6 @@ class Pendulum:
         return noise_array * noise_multiplier
         
 
-
     def derivatives(self, state, t):
         # create empty array to store derivative values
         derivative_array = np.zeros_like(state)
@@ -143,7 +142,7 @@ class Pendulum:
         self.pendulum_xs = self.pendulum_displacement + self.cart_positions_array
         self.pendulum_ys = self.length * np.cos(self.pendulum_angles_array)
 
-        self.pendulum_displacement_velocity = np.diff(self.pad_array(self.pendulum_displacement))
+        self.pendulum_displacement_velocity = np.diff(self.pad_array(self.pendulum_displacement)) # velocity for state space
 
     def pad_array(self,array):
         '''Duplicates the first item of an array to preserve array size while differentiating.'''
