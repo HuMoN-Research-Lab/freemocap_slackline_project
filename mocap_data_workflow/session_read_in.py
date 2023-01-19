@@ -23,7 +23,6 @@ class FreemocapSession:
             self.save_path_dict(self.path_dict_file_path)
             
 
-
     def construct_path_dict(self, session_id: str, freemocap_data_folder_path: Path):
         self.path_dict = {}
         self.path_dict["session_id"] = session_id
@@ -64,6 +63,7 @@ def main():
     starting_foot = "left"
     good_a_pose_frame_number = 2035
     session_info.construct_session_info_dict(BOS_frame_list, starting_foot, good_a_pose_frame_number)
+    session_info.save_info_dict(session_info.session_info_dict_path)
     
 
 if __name__ == "__main__":

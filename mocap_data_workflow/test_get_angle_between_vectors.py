@@ -1,4 +1,3 @@
-import sys
 import numpy as np
 
 
@@ -36,10 +35,12 @@ def test_zero_angle():
 
     print("Function properly handles 0 degree angle")
 
+
 def main():
     test_forty_five_degree_angles()
     test_right_angles()
     test_zero_angle()
+
 
 if __name__ == "__main__":
     main()
