@@ -73,7 +73,7 @@ class Pendulum:
 
         self.state_space_trace_length = 20
 
-        self.plot_state_space_shadow, = self.ax2.plot(self.pendulum_displacement, self.pendulum_displacement_velocity, zorder=1, color="plum")
+        self.plot_state_space_shadow, = self.ax2.plot(self.pendulum_displacement[1:], self.pendulum_displacement_velocity[1:], zorder=1, color="plum")
         self.state_space_center_line = self.ax2.axvline(0, ls='-', color='black', lw=1, zorder=1, label="Base of Support (Cart Location)")
         self.plot_state_space_trace, = self.ax2.plot(self.pendulum_displacement[0], self.pendulum_displacement_velocity[0], zorder=2, color="purple")
         self.scatter_state_space = self.ax2.scatter(self.pendulum_displacement[0], self.pendulum_displacement_velocity[0], zorder=3, color="purple")
@@ -160,9 +160,11 @@ class Pendulum:
         self.cart_scatter.set_offsets((self.cart_positions_array[i], 0))
 
         self.scatter_state_space.set_offsets((self.pendulum_displacement[i], self.pendulum_displacement_velocity[i]))
-
-        self.plot_state_space_trace.set_xdata(self.pendulum_displacement[i-self.state_space_trace_length:i+1])
-        self.plot_state_space_trace.set_ydata(self.pendulum_displacement_velocity[i-self.state_space_trace_length:i+1])
+        trace_length = self.state_space_trace_length
+        if i < self.state_space_trace_length+1:
+            trace_length = i-1
+        self.plot_state_space_trace.set_xdata(self.pendulum_displacement[i-trace_length:i+1])
+        self.plot_state_space_trace.set_ydata(self.pendulum_displacement_velocity[i-trace_length:i+1])
     
     def animate(self):
         # call animation function
@@ -181,5 +183,5 @@ def main(display_bool = True, save_video_bool = False):
         pendulum.anim.save(animation_path, writer=video_writer)
 
 if __name__ == "__main__":
-    #main(display_bool=True, save_video_bool=False)
-    main(display_bool=False, save_video_bool=True)
+    main(display_bool=True, save_video_bool=False)
+    #main(display_bool=False, save_video_bool=True)

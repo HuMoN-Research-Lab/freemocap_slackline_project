@@ -16,7 +16,8 @@ mpl.use('tkagg') # had to add this because plt.show() was crashing due to "segme
 Based in part off of: https://github.com/zjor/inverted-pendulum/blob/master/python/controlled-cart-pendulum.py
 Help understanding PID controller came from: https://pidexplained.com/pid-controller-explained/
 '''
-
+'''array([ 1.02321366e+02,  1.69551710e+00,  8.39543970e+01,  9.51384346e-01,
+       -8.72835920e-01, -3.53001850e-02])'''
 class Pendulum:
     def __init__(self):
         # set length of simulation
@@ -27,13 +28,13 @@ class Pendulum:
         self.gravity = 9.8 # m/s**2
         self.time = 0 # s
         self.time_interval = 0.05  # s
-        self.pendulum_angle = np.radians(10) # angle from vertical, enter in degrees
-        self.angular_velocity = -1 # m/s
-        self.cart_position = 1 # m from origin
+        self.pendulum_angle = np.radians(1.61887251) # angle from vertical, enter in degrees
+        self.angular_velocity = -0.0655983995 # m/s
+        self.cart_position = 0.0360524181 # m from origin
         self.desired_cart_position = 0 # m from origin
-        self.cart_velocity = -3 # m/s
-        self.mass = 50 # kg
-        self.spring_constant = 150 # N/m
+        self.cart_velocity = 0.00235032545 # m/s
+        self.mass = 73 # kg
+        self.spring_constant = 1 # N/m
 
 
         # create time array
@@ -60,7 +61,8 @@ class Pendulum:
         self.ax1.set_aspect('equal')
         self.ax1.set_xlim(-self.length*5, self.length*5)
         self.ax1.set_ylim(-self.length*0.5, self.length*1.5)
-        self.fig.suptitle(f'Cart and Pendulum\n\n\
+        self.fig.suptitle(f'Cart and Pendulum\n\
+            Starting conditions from Session 2, Frame 2640\n\
             Starting Angle {np.degrees(self.pendulum_angle):.1f} Degrees\n\
             Starting Cart Position of {self.cart_position:.1f} m\n\
             Starting Cart Velocity of {self.cart_velocity:.1f} m/s')
@@ -179,9 +181,11 @@ class Pendulum:
         self.spring_line.set_linewidth(self.spring_display_scale/(abs(self.cart_positions_array[i])+1))
 
         self.scatter_state_space.set_offsets((self.pendulum_displacement[i], self.pendulum_displacement_velocity[i]))
-
-        self.plot_state_space_trace.set_xdata(self.pendulum_displacement[i-self.state_space_trace_length:i+1])
-        self.plot_state_space_trace.set_ydata(self.pendulum_displacement_velocity[i-self.state_space_trace_length:i+1])
+        trace_length = self.state_space_trace_length
+        if i < self.state_space_trace_length+1:
+            trace_length = i-1
+        self.plot_state_space_trace.set_xdata(self.pendulum_displacement[i-trace_length:i+1])
+        self.plot_state_space_trace.set_ydata(self.pendulum_displacement_velocity[i-trace_length:i+1])
     
     def animate(self):
         # call animation function
