@@ -16,7 +16,7 @@ def get_state_information(BOS_trajectories_frame_xyz, com_trajectories_frame_xyz
     print(pendulum_angle_frame.shape)
     pendulum_velocity = np.diff(pad_array(pendulum_angle_frame))
 
-    if check_arrays_have_same_length([BOS_frame_x, BOS_velocity, com_frame_x, com_velocity, pendulum_velocity]):
+    if check_arrays_have_same_length([BOS_frame_x, BOS_velocity, com_frame_x, com_velocity, pendulum_angle_frame, pendulum_velocity]):
         state_information = []
         for frame in range(BOS_frame_x.shape[0]):
             this_frame_state = np.array([BOS_frame_x[frame], BOS_velocity[frame], com_frame_x[frame], com_velocity[frame], pendulum_angle_frame[frame], pendulum_velocity[frame]])
