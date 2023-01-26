@@ -4,11 +4,12 @@ import matplotlib.pyplot as plt
 import math
 import matplotlib.animation as animation
 
+import os
 from mpl_toolkits import mplot3d
 from matplotlib.animation import FuncAnimation
 from scipy.integrate import odeint
 
-plt.rcParams['animation.ffmpeg_path'] = '/Users/philipqueen/opt/anaconda3/lib/python3.9/site-packages/ffmpeg'
+#plt.rcParams['animation.ffmpeg_path'] = '/Users/philipqueen/opt/anaconda3/lib/python3.9/site-packages'
 
 mpl.use('tkagg') # had to add this because plt.show() was crashing due to "segmentation fault:11" 
 
@@ -16,10 +17,10 @@ mpl.use('tkagg') # had to add this because plt.show() was crashing due to "segme
 Based in part off of: https://github.com/zjor/inverted-pendulum/blob/master/python/controlled-cart-pendulum.py
 Help understanding PID controller came from: https://pidexplained.com/pid-controller-explained/
 '''
-'''array([ 1.02321366e+02,  1.69551710e+00,  8.39543970e+01,  9.51384346e-01,
-       -8.72835920e-01, -3.53001850e-02])'''
+
 class Pendulum:
     def __init__(self):
+        self.save_video = True
         # set length of simulation
         self.simulation_length = 10 #s
 
@@ -34,7 +35,7 @@ class Pendulum:
         self.desired_cart_position = 0 # m from origin
         self.cart_velocity = 0.00235032545 # m/s
         self.mass = 73 # kg
-        self.spring_constant = 1 # N/m
+        self.spring_constant = 75 # N/m
 
 
         # create time array
@@ -196,13 +197,18 @@ def main(display_bool = True, save_video_bool = False):
     pendulum = Pendulum()
     pendulum.animate()
 
-    if display_bool:
-        plt.show()
-    if save_video_bool:
-        animation_path = "/Users/Philip/Documents/GitHub/Learning/Videos/cart_pendulum_anim.mp4"
-        video_writer = animation.FFMpegWriter(fps=1/pendulum.time_interval, bitrate=500)
+    if pendulum.save_video:
+        #animation_path = Path("/Users/Philip/Documents/GitHub/Learning/Videos/anim.mp4")
+        #video_writer = animation.FFMpegWriter(fps=1/pendulum.time_interval)
+        #pendulum.anim.save(animation_path, writer=video_writer)
+
+        animation_path = os.path.join("/Users/Philip/Documents/GitHub/Learning/Videos/","anim.mp4")
+        video_writer = animation.FFMpegWriter(fps=60)
         pendulum.anim.save(animation_path, writer=video_writer)
+    else:
+        plt.show()
+
+        
 
 if __name__ == "__main__":
-    main(display_bool=True, save_video_bool=False)
-    #main(display_bool=False, save_video_bool=True)
+    main()
