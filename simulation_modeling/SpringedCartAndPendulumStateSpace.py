@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import math
 import matplotlib.animation as animation
 
-import os
+from pathlib import Path
 from mpl_toolkits import mplot3d
 from matplotlib.animation import FuncAnimation
 from scipy.integrate import odeint
@@ -36,6 +36,8 @@ class Pendulum:
         self.cart_velocity = 0.00235032545 # m/s
         self.mass = 73 # kg
         self.spring_constant = 75 # N/m
+
+        self.fps = 1/self.time_interval
 
 
         # create time array
@@ -193,18 +195,15 @@ class Pendulum:
         self.anim = FuncAnimation(self.fig, self.animate_frame, frames=np.arange(0, len(self.time_array)), interval=self.time_interval, save_count=int(self.simulation_length/self.time_interval))
         
 
-def main(display_bool = True, save_video_bool = False):
+def main():
     pendulum = Pendulum()
     pendulum.animate()
 
     if pendulum.save_video:
-        #animation_path = Path("/Users/Philip/Documents/GitHub/Learning/Videos/anim.mp4")
-        #video_writer = animation.FFMpegWriter(fps=1/pendulum.time_interval)
-        #pendulum.anim.save(animation_path, writer=video_writer)
-
-        animation_path = os.path.join("/Users/Philip/Documents/GitHub/Learning/Videos/","anim.mp4")
-        video_writer = animation.FFMpegWriter(fps=60)
+        animation_path = Path("/Users/Philip/Documents/GitHub/Learning/Videos/anim.mp4")
+        video_writer = animation.FFMpegWriter(fps=pendulum.fps)
         pendulum.anim.save(animation_path, writer=video_writer)
+
     else:
         plt.show()
 
