@@ -27,6 +27,12 @@ def get_state_information(BOS_trajectories_frame_xyz, com_trajectories_frame_xyz
     else:
         print("input arrays must have same length")
 
+def save_state_information(path_dict, state_information, start_frame, end_frame):
+    save_name = path_dict["session_id"] + "_" + str(start_frame) + "_" + str(end_frame) + ".npy"
+    save_path = path_dict["freemocap_data_folder"] / save_name
+    
+    np.save(save_path,state_information[start_frame:end_frame,:])
+
 def get_virtual_pendulum_angle_array(BOS_trajectories_frame_xyz, com_trajectories_frame_xyz):
     '''Get angle of virtual pendulum between BOS and COM (on x and z axis) for each frame'''
     virtual_pendulum_angle_array = [get_virtual_pendulum_angle(BOS_trajectories_frame_xyz[i],com_trajectories_frame_xyz[i]) for i in range(BOS_trajectories_frame_xyz.shape[0])]
@@ -92,7 +98,6 @@ def main():
     pendulum_angle_frame = get_virtual_pendulum_angle_array(BOS_trajectories_frame_xyz, com_trajectories_frame_xyz)
 
     state_information = get_state_information(BOS_trajectories_frame_xyz, com_trajectories_frame_xyz, pendulum_angle_frame)
-
     print("State information succesfully extracted")
 
 
