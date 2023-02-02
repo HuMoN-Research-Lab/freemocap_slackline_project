@@ -1,9 +1,12 @@
 import math
+import logging
 import numpy as np
 from pathlib import Path
 
+logging.basicConfig(level = logging.INFO)
+
 '''Load in a session, and extract the state information from that session, which should look like:
-[BOS location, BOS velocity, COM location, COM velocity, angular momentum/velocity]
+[BOS location, BOS velocity, COM location, COM velocity, angle, angular velocity]
 '''
 
 def get_state_information(BOS_trajectories_frame_xyz, com_trajectories_frame_xyz, pendulum_angle_frame):
@@ -13,7 +16,7 @@ def get_state_information(BOS_trajectories_frame_xyz, com_trajectories_frame_xyz
 
     com_frame_x = com_trajectories_frame_xyz[:,0]
     com_velocity = np.diff(pad_array(com_frame_x))
-    print(pendulum_angle_frame.shape)
+    logging.debug(f"Shape of pendulum angle array is: {pendulum_angle_frame.shape}")
     pendulum_velocity = np.diff(pad_array(pendulum_angle_frame))
 
     if check_arrays_have_same_length([BOS_frame_x, BOS_velocity, com_frame_x, com_velocity, pendulum_angle_frame, pendulum_velocity]):
@@ -25,13 +28,14 @@ def get_state_information(BOS_trajectories_frame_xyz, com_trajectories_frame_xyz
         return np.array(state_information)
 
     else:
-        print("input arrays must have same length")
+        logging.error("Input arrays must have same length")
 
 def save_state_information(path_dict, state_information, start_frame, end_frame):
     save_name = path_dict["session_id"] + "_" + str(start_frame) + "_" + str(end_frame) + ".npy"
     save_path = path_dict["freemocap_data_folder"] / save_name
     
     np.save(save_path,state_information[start_frame:end_frame,:])
+    logging.info(f"state information saved to file {save_path}")
 
 def get_virtual_pendulum_angle_array(BOS_trajectories_frame_xyz, com_trajectories_frame_xyz):
     '''Get angle of virtual pendulum between BOS and COM (on x and z axis) for each frame'''
@@ -39,7 +43,6 @@ def get_virtual_pendulum_angle_array(BOS_trajectories_frame_xyz, com_trajectorie
     
     return np.array(virtual_pendulum_angle_array)
     
-
 def get_virtual_pendulum_angle(base_coordinate_xyz, top_coordinate_xyz):
     '''Find angle, in degrees, from vertical line (x-axis), between base coordinate and top coordinate. 
     Clockwise angles are positive, counter clockwise angles are negative.
@@ -98,7 +101,7 @@ def main():
     pendulum_angle_frame = get_virtual_pendulum_angle_array(BOS_trajectories_frame_xyz, com_trajectories_frame_xyz)
 
     state_information = get_state_information(BOS_trajectories_frame_xyz, com_trajectories_frame_xyz, pendulum_angle_frame)
-    print("State information succesfully extracted")
+    logging.info("State information succesfully extracted")
 
 
 

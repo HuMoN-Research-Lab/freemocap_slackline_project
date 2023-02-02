@@ -1,5 +1,8 @@
+import logging
 import numpy as np
 from pathlib import Path
+
+logging.basicConfig(level = logging.INFO)
 
 from construct_BOS_frame_xyz import construct_BOS_frame_xyz
 
@@ -14,12 +17,12 @@ class FreemocapSession:
         self.session_info_dict_path = self.session_folder_path / self.session_info_dict_name
         
         if self.path_dict_file_path.exists():
-            print("loading pre-saved path dictionary...")
+            logging.info("loading pre-saved path dictionary...")
             self.load_path_dict(self.path_dict_file_path)
         else:
-            print("creating path dictionary...")
+            logging.info("creating path dictionary...")
             self.construct_path_dict(session_id, freemocap_data_folder_path)
-            print("saving path dictionary to file...")
+            logging.info("saving path dictionary to file...")
             self.save_path_dict(self.path_dict_file_path)
             
 
@@ -36,9 +39,11 @@ class FreemocapSession:
 
     def save_path_dict(self, path_dict_file_path):
         np.save(path_dict_file_path, self.path_dict)
+        logging.info("path dictionary saved")
 
     def load_path_dict(self, path_dict_file_path):
         self.path_dict = np.load(path_dict_file_path, allow_pickle=True).item()
+        logging.info("path dictionary saved")
 
     def construct_session_info_dict(self, BOS_frame_list: list, starting_foot: str, good_a_pose_frame_number: int):
         self.session_info_dict = {}
@@ -49,10 +54,11 @@ class FreemocapSession:
 
     def save_info_dict(self, session_info_dict_file_path):
         np.save(session_info_dict_file_path, self.session_info_dict)
+        logging.info("info dictionary saved")
 
     def load_info_dict(self, session_info_dict_file_path):
         self.session_info_dict = np.load(session_info_dict_file_path, allow_pickle=True).item()
-
+        logging.info("info dictionary loaded")
 
 def main():
     session_id = "4stepsequence_session2_10_5_22"
