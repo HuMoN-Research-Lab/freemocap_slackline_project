@@ -42,4 +42,5 @@
 
 
 ## Additional Materials
-![[SlacklineTrainingScheduleKellerEtAl2011.png]]
+<img width="585" alt="SlacklineTrainingScheduleKellerEtAl2011" src="https://user-images.githubusercontent.com/24758117/224205491-31a95f9b-06f4-44fd-80a9-a4998027622d.png">
+
