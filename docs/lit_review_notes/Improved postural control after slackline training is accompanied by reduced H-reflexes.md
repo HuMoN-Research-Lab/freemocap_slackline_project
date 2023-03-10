@@ -12,7 +12,7 @@
 ---
 
 ## Key Definitions
-**Hoffman Reflexes (H-Reflexes):** 
+**Hoffman Reflexes (H-Reflexes):**  "A monosynaptic reflex response that can be obtained from the soleus muscle after stimulation of the tibial nerve. Stimulation of afferent fibers in the tibial nerve triggers a reflex response in the motor nerves to the soleus via the spinal cord" [source](https://www.sciencedirect.com/topics/neuroscience/hoffmann-reflex#:~:text=The%20H%20reflex%20is%20
 
 
 ---
