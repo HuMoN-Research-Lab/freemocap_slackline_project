@@ -20,6 +20,9 @@ Iqbal, Kamran. “An LMI Approach to Controller Design for Balancing over Slackl
 Paoletti, P., and L. Mahadevan. “Balancing on Tightropes and Slacklines.” _Journal of The Royal Society Interface_ 9, no. 74 (April 18, 2012): 2097–2108. [https://doi.org/10.1098/rsif.2012.0077](https://doi.org/10.1098/rsif.2012.0077).
 - Formulates a minimal model and develops a control strategy for it. However, it does not compare the control strategy to physiological movements (see Vallery, Neumann)
 
+Gabel, Charles Philip, Bernard Guy, Hamid Reza Mokhtarinia, and Markus Melloh. “Slacklining: A Narrative Review on the Origins, Neuromechanical Models and Therapeutic Use.” _World Journal of Orthopedics_ 12, no. 6 (June 18, 2021): 360–75. [https://doi.org/10.5312/wjo.v12.i6.360](https://doi.org/10.5312/wjo.v12.i6.360).
+- Behavior based control. model with a lot of background
+
 ## Slacklining Balance Strategies
 
 Vallery, Heike, and Julia Neumann. “Balancing on Slacklines: Modeling and Empirical Evaluation,” 2013.
@@ -32,7 +35,16 @@ Mildren, R. L., M. Zaback, A. L. Adkin, L. R. Bent, and J. S. Frank. “Learning
 - Focused on the development of coordination during the learning process. Describes joint pairs moving either in or out of phase, indicating developed movement synergies.
 
 Singh, Rajat Emanuel, Kamran Iqbal, and Gannon White. “Proficiency-Based Recruitment of Muscle Synergies in a Highly Perturbed Walking Task (Slackline).” _Engineering Reports_ 2, no. 10 (2020): e12253. [https://doi.org/10.1002/eng2.12253](https://doi.org/10.1002/eng2.12253). 
-- Used electromyography on three different skill level of slackliner in order to investigate muscle synergies. Found different muscle symmetries across different skill levels.
+- Used electromyography on three different skill levels of slackliner in order to investigate muscle synergies. Found different muscle symmetries across different skill levels.
+
+Gabel, Charles Philip, Bernard Guy, Hamid Reza Mokhtarinia, and Markus Melloh. “Slacklining: An Explanatory Multi-Dimensional Model Considering Classical Mechanics, Biopsychosocial Health and Time.” _World Journal of Orthopedics_ 12, no. 3 (March 18, 2021): 102–18. [https://doi.org/10.5312/wjo.v12.i3.102](https://doi.org/10.5312/wjo.v12.i3.102).
+- An all encompassing model of how people slackline, focused on a general conception of behavior studies
+
+Kodama, Kentaro, Yusuke Kikuchi, and Hideo Yamagiwa. “Whole-Body Coordination Skill for Dynamic Balancing on a Slackline.” edited by Mihoko Otake, Setsuya Kurahashi, Yuiko Ota, Ken Satoh, and Daisuke Bekki, 10091:528–46. Lecture Notes in Computer Science. Cham: Springer International Publishing, 2017. [https://doi.org/10.1007/978-3-319-50953-2_39](https://doi.org/10.1007/978-3-319-50953-2_39).
+- Investigates fundamental skills used in slacklining
+
+Serrien, Ben, Hohenauer, Erich, Clijsen, Ron, Baeyens, Jean-Pierre and Ursula Hohenauer-Küng. Balance Coordination Strategies on Slacklines: Analysis By Means of  Self-Organizing Maps. In 5th Motor Control Conference (2016)
+- Uses self-organizing map analysis to investigate kinematic strategies of balance.
 
 ## Slackline Performance Indicators and Measures of Stability
 
@@ -41,6 +53,10 @@ Stein, Kevin, and Katja Mombaur. “Performance Indicators for Stability of Slac
 
 Stein, Kevin, and Katja Mombaur. “A Quantitative Comparison of Slackline Balancing Capabilities of Experts and Beginners.” _Frontiers in Sports and Active Living_ 4 (March 10, 2022): 831362. [https://doi.org/10.3389/fspor.2022.831362](https://doi.org/10.3389/fspor.2022.831362).
 - Compared novice to professional slackliners to evaluate thirty balance metrics.
+
+Kodama, Kentaro, Hideo Yamagiwa, and Yusuke Kikuchi. “Effects of Slackline Training on Dynamic Postural Balancing.” In _Proceedings of Second International Workshop on Skill Science (SKL 2015)_, 48–49, 2015. 
+- Describes limits of static balance parameters, uses non-linear time series analysis instead
+
 
 ## Slacklining as Balance Training
 
@@ -55,12 +71,15 @@ Donath, Lars, Ralf Roth, Lukas Zahner, and Oliver Faude. “Slackline Training (
 
 Dordevic, Milos, Anita Hökelmann, Patrick Müller, Kathrin Rehfeld, and Notger G. Müller. “Improvements in Orientation and Balancing Abilities in Response to One Month of Intensive Slackline-Training. A Randomized Controlled Feasibility Study.” _Frontiers in Human Neuroscience_ 11 (2017). [https://www.frontiersin.org/articles/10.3389/fnhum.2017.00055](https://www.frontiersin.org/articles/10.3389/fnhum.2017.00055).
 - One month of intensive slackline training had significant effects on the vestibular system function, resulting in significantly better closed eye balance.
-- 
+
 Serrien, Ben, Erich Hohenauer, Ron Clijsen, Wolfgang Taube, Jean-Pierre Baeyens, and Ursula Küng. “Changes in Balance Coordination and Transfer to an Unlearned Balance Task after Slackline Training: A Self-Organizing Map Analysis.” _Experimental Brain Research_ 235, no. 11 (November 1, 2017): 3427–36. [https://doi.org/10.1007/s00221-017-5072-7](https://doi.org/10.1007/s00221-017-5072-7).
 - Used a self organizing map analysis to visualize information about balance strategies before and after slackline training.
 
 Granacher, U., N. Iten, R. Roth, and A. Gollhofer. “Slackline Training for Balance and Strength Promotion.” _International Journal of Sports Medicine_, July 30, 2010, 717–23. [https://doi.org/10.1055/s-0030-1261936](https://doi.org/10.1055/s-0030-1261936).
 - Slackline training leads to improved rate of force developments, but disappear after training stops.
+
+Reyes Ferrada, Waleska, Paula Plaza, Daniel Jerez Mayorga, Luis Javier Chirosa Ríos, and Luis Peñailillo. “Effects of Slackline Training on Core Endurance and Dynamic Balance,” 2021. [https://digibug.ugr.es/handle/10481/67820](https://digibug.ugr.es/handle/10481/67820).
+- Regular slackliners perform similarly on the star balance test stable condition to active individuals, but significantly better in the unstable condition
 
 ## Slacklining and General Fitness 
 
