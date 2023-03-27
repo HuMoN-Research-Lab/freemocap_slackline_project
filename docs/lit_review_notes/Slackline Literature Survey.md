@@ -21,7 +21,7 @@ Paoletti, P., and L. Mahadevan. “Balancing on Tightropes and Slacklines.” _J
 - Formulates a minimal model and develops a control strategy for it. However, it does not compare the control strategy to physiological movements (see Vallery, Neumann)
 
 Gabel, Charles Philip, Bernard Guy, Hamid Reza Mokhtarinia, and Markus Melloh. “Slacklining: A Narrative Review on the Origins, Neuromechanical Models and Therapeutic Use.” _World Journal of Orthopedics_ 12, no. 6 (June 18, 2021): 360–75. [https://doi.org/10.5312/wjo.v12.i6.360](https://doi.org/10.5312/wjo.v12.i6.360).
-- Behavior based control. model with a lot of background
+- Behavior based control. model with a lot of background, published in a questionable journal, generally seems fishy
 
 ## Slacklining Balance Strategies
 
