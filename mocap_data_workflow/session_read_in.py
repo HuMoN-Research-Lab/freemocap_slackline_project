@@ -27,6 +27,7 @@ class FreemocapSession:
             
 
     def construct_path_dict(self, session_id: str, freemocap_data_folder_path: Path):
+        logging.info("creating path dictionary")
         self.path_dict = {}
         self.path_dict["session_id"] = session_id
         self.path_dict["freemocap_data_folder"] = freemocap_data_folder_path
@@ -46,6 +47,7 @@ class FreemocapSession:
         logging.info("path dictionary saved")
 
     def construct_session_info_dict(self, BOS_frame_list: list, starting_foot: str, good_a_pose_frame_number: int):
+        logging.info("creating info dictionary")
         self.session_info_dict = {}
         self.session_info_dict["BOS_frame_list"] = BOS_frame_list
         self.session_info_dict["starting_foot"] = starting_foot
@@ -61,13 +63,13 @@ class FreemocapSession:
         logging.info("info dictionary loaded")
 
 def main():
-    session_id = "4stepsequence_session2_10_5_22"
+    session_id = "4stepsequence_session5_10_5_22"
     freemocap_data_folder_path = Path("/Users/philipqueen/Documents/Humon Research Lab/FreeMocap_Data")
     session_info = FreemocapSession(session_id, freemocap_data_folder_path)
 
-    BOS_frame_list = [0, 3371, 4371]
-    starting_foot = "left"
-    good_a_pose_frame_number = 2035
+    BOS_frame_list = [0, 3540, 4650, 7100, 8350, 8650]
+    starting_foot = "right"
+    good_a_pose_frame_number = 2800
     session_info.construct_session_info_dict(BOS_frame_list, starting_foot, good_a_pose_frame_number)
     session_info.save_info_dict(session_info.session_info_dict_path)
     
