@@ -18,11 +18,11 @@ A comprehensive literature review can be found at: [slackline lit review](https:
 ![Virtual pendulum overlay on motion capture data](https://i.imgur.com/I7xBFPJ.png)
 - Overlay of the virtual pendulum from the base of support to the center of mass, displayed over animation of motion capture data.
 
-![[LeftFootStandingX.png]]
+![Hand Coordination Mediolateral](https://i.imgur.com/SO7zEGd.png)
 - Right vs left hand motions in the mediolateral direction. Investigating the claim from [[Performance indicators for stability of slackline balancing]] that hand coordination is an indicator of slackline expertise.
-![[LeftFootStandingZ.png]]
+![Hand Coordination Vertical](https://i.imgur.com/XwvD6wq.png)
 - Right vs left hand motions in the vertical direction. Investigating the claim from [[Performance indicators for stability of slackline balancing]] that hand coordination is an indicator of slackline expertise.
-![[LeftFootStanding.png]]
+![Foot motion patterns in mediolateral plane](https://i.imgur.com/nyeYlWf.png)
 -Foot motion patterns on the mediolateral plane, investigating the modeling from [[Balancing on tightropes and slacklines - Paoletti Mahadevan 2012]] and [[An LMI Approach to Controller Design for Balancing over Slackline - Iqbal 2019]] that model the "slackliners" foot as traveling along a circular track rather than on a springed horizontal track.
 
 
