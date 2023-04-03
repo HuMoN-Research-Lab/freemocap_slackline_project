@@ -20,7 +20,12 @@ def construct_BOS_frame_xyz(session_path_dict: dict, BOS_frame_list: list, start
         else:
             end_frame = BOS_frame_list[index+1]
             BOS_frame_xyz = np.concatenate((BOS_frame_xyz, com_frame_xyz_dict[current_foot][start_frame:end_frame, :]))
-    
+            
+            if current_foot == "right":
+                current_foot = "left"
+            else:
+                current_foot = "right"
+                
     print(f"Shape of BOS_frame_X: {BOS_frame_xyz.shape}")
     return BOS_frame_xyz
 
