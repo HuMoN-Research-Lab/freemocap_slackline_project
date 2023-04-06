@@ -6,7 +6,7 @@ A comprehensive literature review can be found at: [slackline lit review](https:
 
 ## Results 
 
-https://user-images.githubusercontent.com/24758117/228618561-11e0ed58-4a15-4393-ac8b-4063404f5764.mp4
+![type:video](https://user-images.githubusercontent.com/24758117/228618561-11e0ed58-4a15-4393-ac8b-4063404f5764.mp4)
 - Screenshot from left foot standing session showing 2d motion capture overlay, 3d motion capture animation, distance of center of mass from base of support in the mediolateral direction, and the state space (distance vs. velocity) of the mediolateral distance between the center of mass and base of support.
 
 ![Left foot standing time series](https://i.imgur.com/dXkyLmF.png)
