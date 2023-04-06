@@ -5,13 +5,13 @@ theme:
 
 markdown_extensions:
   - attr_list
-  
+
 plugins:
-  - mkdocs-video
+  - mkdocs-video:
       is_video: True
       video_muted: True
       video_controls: True
       css_style:
-        width: "50%"  
+        width: "50%"
 
 repo_url: https://github.com/HuMoN-Research-Lab/freemocap_slackline_project
