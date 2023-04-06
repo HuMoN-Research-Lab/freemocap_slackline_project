@@ -31,7 +31,7 @@ https://user-images.githubusercontent.com/24758117/228621799-c3abc50d-1990-457d-
 ![Hand Coordination Vertical](https://i.imgur.com/XwvD6wq.png)
 - Right vs left hand motions in the vertical direction. Investigating the claim from [[Performance indicators for stability of slackline balancing]] that hand coordination is an indicator of slackline expertise.
 
-![Foot motion patterns in mediolateral plane](https://i.imgur.com/r7K8XBF.png)
+![Foot motion patterns in mediolateral plane](https://user-images.githubusercontent.com/24758117/230476792-f6b74423-d38e-466b-b403-78a0a7402350.png)
 - Foot motion patterns on the mediolateral plane, investigating the modeling from [[Balancing on tightropes and slacklines - Paoletti Mahadevan 2012]] and [[An LMI Approach to Controller Design for Balancing over Slackline - Iqbal 2019]] that model the "slackliners" foot as traveling along a circular track rather than on a springed horizontal track.
 
 
