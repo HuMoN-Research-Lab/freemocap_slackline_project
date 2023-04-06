@@ -2,5 +2,8 @@ site_name: Slackline Project Docs
 
 theme:
   name: "material"
+ 
+ plugins:
+    - mkdocs-video
 
 repo_url: https://github.com/HuMoN-Research-Lab/freemocap_slackline_project
