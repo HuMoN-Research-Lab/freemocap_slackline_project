@@ -2,7 +2,10 @@ site_name: Slackline Project Docs
 
 theme:
   name: "material"
- 
+
+markdown_extensions:
+  - attr_list
+  
 plugins:
   - mkdocs-video
       is_video: True
