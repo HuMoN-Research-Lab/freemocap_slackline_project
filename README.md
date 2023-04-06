@@ -1,5 +1,7 @@
 # Freemocap Slackline Project
 
+https://humon-research-lab.github.io/freemocap_slackline_project/
+
 This is the repo for the project that will do biomechanical analysis of slackline data, especially looking at the relationship between Center of Mass (CoM) and Base of Support (BoS). Possibly using 'cart and pendulum,' 'PD' controller types of approaches.
 
 ## ODEPendulum.py 
