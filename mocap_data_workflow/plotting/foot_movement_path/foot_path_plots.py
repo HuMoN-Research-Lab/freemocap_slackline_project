@@ -71,16 +71,35 @@ class LeftFootPlots:
 
     def create_subplot1(self, session_data_dict):
         self.ax1 = self.fig.add_subplot(self.spec[0, 0]) 
+        self.ax1.set_aspect('equal')
+        self.ax1.set_adjustable('box')
+
 
         self.ax1.set_title("Session 2 (Subject 2)")
         self.ax1.set_xlabel(f"Base of Support X [mm]")
         self.ax1.set_ylabel(f"Base of Support Z [mm]")
 
+
         start_frame = session_data_dict["start_frame"] + self.initial_offset_frames
         end_frame = start_frame + self.length_of_data_frames
 
-        self.plot_state_space_shadow, = self.ax1.plot(session_data_dict["BOS_frame_xyz"][start_frame:end_frame, 0], session_data_dict["BOS_frame_xyz"][start_frame:end_frame, 2], zorder=1, color="plum")
+        self.plot_foot_movement_shadow, = self.ax1.plot(session_data_dict["BOS_frame_xyz"][start_frame:end_frame, 0], session_data_dict["BOS_frame_xyz"][start_frame:end_frame, 2], zorder=1, color="plum")
 
+        self.ax1.set_aspect('equal', adjustable='box')
+
+        x_limits = self.ax1.get_xlim()
+        y_limits = self.ax1.get_ylim()
+
+        x_range = x_limits[1] - x_limits[0]
+        y_range = y_limits[1] - y_limits[0]
+
+        max_range = max(x_range, y_range)
+
+        x_new_limits = ((x_limits[0] + x_limits[1] - max_range) / 2, (x_limits[0] + x_limits[1] + max_range) / 2)
+        y_new_limits = ((y_limits[0] + y_limits[1] - max_range) / 2, (y_limits[0] + y_limits[1] + max_range) / 2)
+
+        self.ax1.set_xlim(x_new_limits)
+        self.ax1.set_ylim(y_new_limits)
 
     def create_subplot2(self, session_data_dict):
         self.ax2 = self.fig.add_subplot(self.spec[0, 1]) 
@@ -92,10 +111,27 @@ class LeftFootPlots:
         start_frame = session_data_dict["start_frame"] + self.initial_offset_frames
         end_frame = start_frame + self.length_of_data_frames
 
-        self.plot_state_space_shadow, = self.ax2.plot(session_data_dict["BOS_frame_xyz"][start_frame:end_frame, 0], session_data_dict["BOS_frame_xyz"][start_frame:end_frame, 2], zorder=1, color="plum")
+        self.plot_foot_movement_shadow, = self.ax2.plot(session_data_dict["BOS_frame_xyz"][start_frame:end_frame, 0], session_data_dict["BOS_frame_xyz"][start_frame:end_frame, 2], zorder=1, color="plum")
+
+        self.ax2.set_aspect('equal', adjustable='box')
+
+        x_limits = self.ax2.get_xlim()
+        y_limits = self.ax2.get_ylim()
+
+        x_range = x_limits[1] - x_limits[0]
+        y_range = y_limits[1] - y_limits[0]
+
+        max_range = max(x_range, y_range)
+
+        x_new_limits = ((x_limits[0] + x_limits[1] - max_range) / 2, (x_limits[0] + x_limits[1] + max_range) / 2)
+        y_new_limits = ((y_limits[0] + y_limits[1] - max_range) / 2, (y_limits[0] + y_limits[1] + max_range) / 2)
+
+        self.ax2.set_xlim(x_new_limits)
+        self.ax2.set_ylim(y_new_limits)
 
     def create_subplot3(self, session_data_dict):
         self.ax3 = self.fig.add_subplot(self.spec[1, 0]) 
+
 
         self.ax3.set_title("Session 4 (subject 3)")
         self.ax3.set_xlabel(f"Base of Support X [mm]")
@@ -104,7 +140,23 @@ class LeftFootPlots:
         start_frame = session_data_dict["start_frame"] + self.initial_offset_frames
         end_frame = start_frame + self.length_of_data_frames
 
-        self.plot_state_space_shadow, = self.ax3.plot(session_data_dict["BOS_frame_xyz"][start_frame:end_frame, 0], session_data_dict["BOS_frame_xyz"][start_frame:end_frame, 2], zorder=1, color="plum")
+        self.plot_foot_movement_shadow, = self.ax3.plot(session_data_dict["BOS_frame_xyz"][start_frame:end_frame, 0], session_data_dict["BOS_frame_xyz"][start_frame:end_frame, 2], zorder=1, color="plum")
+
+        self.ax3.set_aspect('equal', adjustable='box')
+
+        x_limits = self.ax3.get_xlim()
+        y_limits = self.ax3.get_ylim()
+
+        x_range = x_limits[1] - x_limits[0]
+        y_range = y_limits[1] - y_limits[0]
+
+        max_range = max(x_range, y_range)
+
+        x_new_limits = ((x_limits[0] + x_limits[1] - max_range) / 2, (x_limits[0] + x_limits[1] + max_range) / 2)
+        y_new_limits = ((y_limits[0] + y_limits[1] - max_range) / 2, (y_limits[0] + y_limits[1] + max_range) / 2)
+
+        self.ax3.set_xlim(x_new_limits)
+        self.ax3.set_ylim(y_new_limits)
 
     def create_subplot4(self, session_data_dict):
         self.ax4 = self.fig.add_subplot(self.spec[1, 1])
@@ -116,8 +168,23 @@ class LeftFootPlots:
         start_frame = session_data_dict["start_frame"] + self.initial_offset_frames
         end_frame = start_frame + self.length_of_data_frames
 
-        self.plot_state_space_shadow, = self.ax4.plot(session_data_dict["BOS_frame_xyz"][start_frame:end_frame, 0], session_data_dict["BOS_frame_xyz"][start_frame:end_frame, 2], zorder=1, color="plum")
- 
+        self.plot_foot_movement_shadow, = self.ax4.plot(session_data_dict["BOS_frame_xyz"][start_frame:end_frame, 0], session_data_dict["BOS_frame_xyz"][start_frame:end_frame, 2], zorder=1, color="plum")
+
+        self.ax4.set_aspect('equal', adjustable='box')
+
+        x_limits = self.ax4.get_xlim()
+        y_limits = self.ax4.get_ylim()
+
+        x_range = x_limits[1] - x_limits[0]
+        y_range = y_limits[1] - y_limits[0]
+
+        max_range = max(x_range, y_range)
+
+        x_new_limits = ((x_limits[0] + x_limits[1] - max_range) / 2, (x_limits[0] + x_limits[1] + max_range) / 2)
+        y_new_limits = ((y_limits[0] + y_limits[1] - max_range) / 2, (y_limits[0] + y_limits[1] + max_range) / 2)
+
+        self.ax4.set_xlim(x_new_limits)
+        self.ax4.set_ylim(y_new_limits)
 
 
 def main():
