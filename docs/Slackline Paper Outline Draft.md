@@ -22,7 +22,12 @@ A comprehensive literature review can be found at: [slackline lit review](https:
 ![Left foot standing state space](https://i.imgur.com/UNHYSVN.png)
 - The state space (distance vs. veclocity) of the mediolateral distance between the center of mass and base of support for 12 seconds of left foot standing
 
-https://user-images.githubusercontent.com/24758117/228621799-c3abc50d-1990-457d-8d54-f4847e04958e.mp4
+<div class="video-container">
+  <video controls>
+    <source src="https://user-images.githubusercontent.com/24758117/228621799-c3abc50d-1990-457d-8d54-f4847e04958e.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
 - Overlay of the virtual pendulum from the base of support to the center of mass, displayed over animation of motion capture data.
 
 ![Hand Coordination Mediolateral](https://i.imgur.com/SO7zEGd.png)
