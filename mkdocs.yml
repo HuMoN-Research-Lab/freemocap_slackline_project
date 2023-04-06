@@ -12,6 +12,12 @@ plugins:
       video_muted: True
       video_controls: True
       css_style:
-        width: "50%"
+        position: "relative"
+        width: "100%"
+        padding-bottom: "56.25%"  # This value is for a 16:9 aspect ratio; adjust as needed
+        overflow: "hidden"
+
+extra_css:
+  - css/custom.css
 
 repo_url: https://github.com/HuMoN-Research-Lab/freemocap_slackline_project
