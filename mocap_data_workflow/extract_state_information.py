@@ -120,7 +120,8 @@ def main():
     pendulum_angle_frame = get_virtual_pendulum_angle_array(BOS_trajectories_frame_xyz, com_trajectories_frame_xyz)
 
     state_information = get_state_information(BOS_trajectories_frame_xyz, com_trajectories_frame_xyz, pendulum_angle_frame)
-    logging.info("State information succesfully extracted")
+    np.save(session_folder_path / "state_information.npy", state_information)
+    logging.info(f"State information succesfully extracted to {session_folder_path / 'state_information.npy'}")
 
 
 
