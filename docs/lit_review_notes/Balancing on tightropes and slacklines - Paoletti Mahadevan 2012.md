@@ -43,3 +43,16 @@
 3. Dissipation and damping are assumed to be equal to the action of torque
 4. Overestimate the reliance on vestibular control, based on experience of how much people rely on vision. They are correct it is apparently sufficient (probably plus proprioception), but not that it is the "normal" strategy
 5. Generally seems a little misguided on understanding the realities of rope balancing, i.e. the last paragraph of the appendix.
+
+### Steve's comments on the limitations
+
+1. I agree, though what they do is to some extent reasonable: they do not model the flywheel explicitly, but they do still model the torque that could be exerted by the flywheel (e.g. arms). Their control input $F^\alpha$ is not representing ankle torque, but the arm torque, simply transferred down to the pivot joint. This is correct, and a much simpler model that I should also have suggested as a first pass. So, what is lost by not modeling the actual flywheel state?
+   - If you don't model the flywheel, you ignore the state of the flywheel. This is fine, if it is okay to ignore their position/velocity. But it means you cannot impose constraints on the flywheel (arm) maximum position or velocity, which I would argue is actually an important constraint. They actually talk about these points in appendix D (as you mention in point 5.). So one thing we probably want to show is that these constraints are indeed important. I think they are, though I don't know which constraint is the limiting one (or if both are). Identifying that could be interesting.
+2. Not sure that's really a significant limitation: the gravitation force they have on $R$ will be very similar to the spring force that we've modeled. I think at this level of abstraction, neither is super "faithful" to a first-principles view of the system, and to decide which is better you'd have to look at data.
+3. I didn't pick on this, where did you see that?
+4. Yeah, I also think visual vs. vestibular might be the most interesting thing to look at.
+   - can we model an estimator that uses both visual and vestibular feedback loops, each with their respecitve delays?
+   - if yes, then we could compare the feedback gains with both, vs. feedback gains with just vestibular, see if it is very different (e.g. we have two contorl inputs, flywheel and arm-CoG. If you have vision, should you rely more on keeping the CoG centered, compared to if don't?), and then validate that prediction with a real-world experiment  (e.g. blindfolded).
+5. You're the expert :)  
+6. Aside: to me it seemed that their torque upperbound is rather high, but I don't have any real reasoning behind it. Do you have better thoughts on this?  
+7. Their note in the appendix that "the qualitative behavior of the system is insensitive to the exact value for $F_{max}$$ is imho rather misleading, since they only checked for increasing this upper bound. I would guess (as discussed above) that the constraints are actually quite important, but of course if you actually enforce them, not if you relax them more.  
