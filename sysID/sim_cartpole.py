@@ -1,8 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from utils import euler_forward
+from utils import euler_forward, rk4
 # from models import cartpole
 from models import cartpole
+
+ode_solver = "rk4"
 
 x = np.array([0, 0, 0, 0.1])
 
@@ -15,9 +17,14 @@ timesteps = int(sim_time/dt)
 
 x_trajectory = np.zeros((timesteps, 4))
 
-for i in range(timesteps):
-    x = euler_forward(params, cartpole, x, dt=dt)
-    x_trajectory[i, :] = x
+if ode_solver == "euler_forward":
+    for i in range(timesteps):
+        x = euler_forward(params, cartpole, x, dt=dt)
+        x_trajectory[i, :] = x
+elif ode_solver == "rk4":
+    t = np.linspace(0, sim_time, timesteps)
+    x_trajectory = np.array(rk4(cartpole.dxdt, x, t, params))
+    
 
 
 

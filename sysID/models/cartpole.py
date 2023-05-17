@@ -64,3 +64,12 @@ def kinetic_energy(params, x):
                           + x[2]**2
                           + 2*params["length_pendulum"]*x[2]*x[3]*np.sin(x[1])))
     return cart_energy + pendulum_energy
+
+def dxdt(t, x, params):
+    M = mass_matrix(params, x)
+    C = coriolis(params, x)
+    F = forces(params, x)
+    acceleration = np.linalg.lstsq(M, F - C, rcond=None)[0]
+    # or
+    # acceleration = np.matmul(np.linalg.pinv(M), (F - C))
+    return np.concatenate((x[2:], acceleration))
