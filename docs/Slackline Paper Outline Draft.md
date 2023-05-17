@@ -1,4 +1,4 @@
-# Slackline Outline Draft
+# Slackline Paper Outline Draft
 
 ## Introduction
 
