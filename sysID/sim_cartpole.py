@@ -2,13 +2,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 from utils import euler_forward, rk4
 # from models import cartpole
-from models import cartpole
+from models import cartpole_flywheel
 
 ode_solver = "rk4"
 
-x = np.array([0, 0, 0, 0.1])
+x = np.array([0, 0, 0, 0.1, 0, 0])
 
-params = cartpole.default_params()
+params = cartpole_flywheel.default_params()
 params["spring_cart"] = 1
 dt = 0.001
 sim_time = 10
@@ -19,11 +19,11 @@ x_trajectory = np.zeros((timesteps, 4))
 
 if ode_solver == "euler_forward":
     for i in range(timesteps):
-        x = euler_forward(params, cartpole, x, dt=dt)
+        x = euler_forward(params, cartpole_flywheel, x, dt=dt)
         x_trajectory[i, :] = x
 elif ode_solver == "rk4":
     t = np.linspace(0, sim_time, timesteps)
-    x_trajectory = np.array(rk4(cartpole.dxdt, x, t, params))
+    x_trajectory = np.array(rk4(cartpole_flywheel.dxdt, x, t, params))
     
 
 
@@ -46,8 +46,8 @@ plt.ylabel("pole velocity")
 potential = np.zeros(timesteps)
 kinetic = np.zeros(timesteps)
 for i in range(timesteps):
-    potential[i] = cartpole.potential_energy(params, x_trajectory[i, :])
-    kinetic[i] = cartpole.kinetic_energy(params, x_trajectory[i, :])
+    potential[i] = cartpole_flywheel.potential_energy(params, x_trajectory[i, :])
+    kinetic[i] = cartpole_flywheel.kinetic_energy(params, x_trajectory[i, :])
 
 energy_traj = potential + kinetic
 plt.figure(3)
