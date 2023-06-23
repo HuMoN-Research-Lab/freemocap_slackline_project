@@ -84,4 +84,6 @@ def dxdt(t, x, params):
     acceleration = np.linalg.lstsq(M, F - C, rcond=None)[0]
     # or
     # acceleration = np.matmul(np.linalg.pinv(M), (F - C))
-    return np.concatenate((x[2:], acceleration))
+    assert (x.size/2 == acceleration.size)
+    n_dofs = x.size//2
+    return np.concatenate((x[n_dofs:], acceleration))

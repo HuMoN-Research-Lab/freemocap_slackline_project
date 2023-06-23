@@ -15,7 +15,7 @@ sim_time = 10
 
 timesteps = int(sim_time/dt)
 
-x_trajectory = np.zeros((timesteps, 4))
+x_trajectory = np.zeros((timesteps, x.size))
 
 if ode_solver == "euler_forward":
     for i in range(timesteps):
