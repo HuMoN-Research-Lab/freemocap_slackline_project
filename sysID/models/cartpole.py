@@ -24,6 +24,10 @@ def mass_matrix(params, x):
     M[0, 1] = - params["mass_pendulum"] * params["length_pendulum"] * np.cos(x[1])
     M[1, 0] = - params["mass_pendulum"] * params["length_pendulum"] * np.cos(x[1])
     M[1, 1] = params["mass_pendulum"] * params["length_pendulum"]**2
+
+    # assert (np.transpose(M) == M).all(), "M is not symmetric: {}".format(M)
+    # assert (np.linalg.det(M) > 0.), "M is not positive definite: {}".format(M)
+
     return M
 
 # * attempt by GPT to vectorize mass_matrix, left in here for fun for now
