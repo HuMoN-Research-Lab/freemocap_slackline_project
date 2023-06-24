@@ -1,16 +1,15 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from utils import euler_forward, rk4
-# from models import cartpole
-from models import cartpole_flywheel
+from models import cartpole as model
 
 ode_solver = "rk4"
 
-x = np.array([0, 0, 0, 0.1, 0, 0])
+x = np.array([0, 0.01, 0, 0])
 
-params = cartpole_flywheel.default_params()
+params = model.default_params()
 params["spring_cart"] = 1
-dt = 0.001
+dt = 0.005
 sim_time = 10
 
 timesteps = int(sim_time/dt)
@@ -19,14 +18,11 @@ x_trajectory = np.zeros((timesteps, x.size))
 
 if ode_solver == "euler_forward":
     for i in range(timesteps):
-        x = euler_forward(params, cartpole_flywheel, x, dt=dt)
+        x = euler_forward(params, model, x, dt=dt)
         x_trajectory[i, :] = x
 elif ode_solver == "rk4":
     t = np.linspace(0, sim_time, timesteps)
-    x_trajectory = np.array(rk4(cartpole_flywheel.dxdt, x, t, params))
-    
-
-
+    x_trajectory = np.array(rk4(model.dxdt, x, t, params))
 
 plt.figure(1)
 plt.title("Cart position and velocity")
@@ -46,8 +42,8 @@ plt.ylabel("pole velocity")
 potential = np.zeros(timesteps)
 kinetic = np.zeros(timesteps)
 for i in range(timesteps):
-    potential[i] = cartpole_flywheel.potential_energy(params, x_trajectory[i, :])
-    kinetic[i] = cartpole_flywheel.kinetic_energy(params, x_trajectory[i, :])
+    potential[i] = model.potential_energy(params, x_trajectory[i, :])
+    kinetic[i] = model.kinetic_energy(params, x_trajectory[i, :])
 
 energy_traj = potential + kinetic
 plt.figure(3)
@@ -63,7 +59,7 @@ plt.xlabel('timesteps')
 plt.ylabel('Energy [joules]')
 plt.legend(['potential energy', 'kinetic energy'])
 plt.show()
-print(f"Energy error: {(energy_traj[-1] - energy_traj[0])/energy_traj.mean()*100:.2f} %")
+print(f"Energy error: {(energy_traj[-1] - energy_traj[0])/energy_traj.mean()*100:.5f} %")
 
 # q: how do I save the simulated data (x_trajectory) to a file with pickle
 
