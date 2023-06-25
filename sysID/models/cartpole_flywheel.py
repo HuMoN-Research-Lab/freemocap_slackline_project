@@ -72,8 +72,8 @@ def kinetic_energy(params, x):
                        * ((params["length_pendulum"] * x[4])**2
                           + x[3]**2
                           - 2*params["length_pendulum"]*x[3]*x[4]*np.cos(x[1])))
-    inertial_energy = params["inertia_flywheel"]/2 * (x[5] + x[4])**2
-    return cart_energy + pendulum_energy + inertial_energy
+    flywheel_energy = params["inertia_flywheel"]/2 * (x[5] + x[4])**2
+    return cart_energy + pendulum_energy + flywheel_energy
 
 def dxdt(t, x, params):
     M = mass_matrix(params, x)
