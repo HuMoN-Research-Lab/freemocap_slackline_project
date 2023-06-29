@@ -1,2 +1,7 @@
 mkdocs-material
 mkdocs-video
+numpy
+pandas
+matplotlib
+opencv-python
+rich
