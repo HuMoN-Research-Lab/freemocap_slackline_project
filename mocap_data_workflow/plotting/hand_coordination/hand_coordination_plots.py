@@ -6,7 +6,7 @@ from matplotlib.animation import FuncAnimation
 import cv2
 from pathlib import Path
 
-class LeftFootPlots:
+class HandCoordinationPlots:
     def __init__(self):
         pass
 
@@ -193,7 +193,7 @@ class LeftFootPlots:
 
 
 def main():
-    slack_plots = LeftFootPlots()
+    slack_plots = HandCoordinationPlots()
     slack_plots.create_plots()
     plt.show()
 
