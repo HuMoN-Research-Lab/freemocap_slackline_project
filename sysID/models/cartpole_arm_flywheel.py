@@ -3,10 +3,9 @@ import numpy as np
 # assuming state is represented as:
 # x = [cart position, pendulum angle, flywheel angle, cart velocity, pendulum angular velocity, flywheel angular velocity]
 # class CartPole:
-
-    # def __init__():
-    #     pass
-        # .params = .default_params()
+# def __init__():
+#     pass
+# .params = .default_params()
 
 
 def default_params():
