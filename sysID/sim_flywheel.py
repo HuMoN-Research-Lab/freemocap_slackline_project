@@ -1,15 +1,16 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from utils import euler_forward, rk4
-from models import cartpole as model
+from models import cartpole_flywheel as model
 
 ode_solver = "rk4"
 
-x = np.array([0, 0.01, 0, 0])
+x = np.array([0, 3.14, 0, 0, 0, 0])
 
 params = model.default_params()
 params["spring_cart"] = 1
-dt = 0.005
+params["inertia_flywheel"] = 50.
+dt = 0.001
 sim_time = 10
 
 timesteps = int(sim_time/dt)
@@ -26,17 +27,26 @@ elif ode_solver == "rk4":
 
 plt.figure(1)
 plt.title("Cart position and velocity")
-plt.plot(x_trajectory[:, 0], x_trajectory[:, 2])
-plt.scatter(x_trajectory[0, 0], x_trajectory[0, 2], c="r")
+plt.plot(x_trajectory[:, 0], x_trajectory[:, 3])
+plt.scatter(x_trajectory[0, 0], x_trajectory[0, 3], c="r")
 plt.xlabel("cart position")
 plt.ylabel("cart velocity")
 plt.figure(2)
-plt.title("Pole position and velocity")
-plt.plot(x_trajectory[:, 1], x_trajectory[:, 3])
-plt.scatter(x_trajectory[0, 1], x_trajectory[0, 3], c="r")
-plt.xlabel("pole position")
-plt.ylabel("pole velocity")
+plt.title("Flywheel position and velocity")
+plt.plot(x_trajectory[:, 5])
+# plt.scatter(x_trajectory[0, 2], x_trajectory[0, 5], c="r")
+plt.plot(x_trajectory[:, 4], c='g')
+# plt.scatter(x_trajectory[0, 1], x_trajectory[0, 4], c="g")
+plt.xlabel("flywheel position")
+plt.ylabel("flywheel velocity")
+# plt.figure(3)
+# plt.title("Pendulum position and velocity")
+# plt.plot(x_trajectory[:, 1], x_trajectory[:, 4])
+# plt.scatter(x_trajectory[0, 1], x_trajectory[0, 4], c="r")
+# plt.xlabel("Pendulum position")
+# plt.ylabel("Pendulum velocity")
 # plt.show()
+# plt.close()
 
 
 potential = np.zeros(timesteps)
@@ -59,7 +69,7 @@ plt.xlabel('timesteps')
 plt.ylabel('Energy [joules]')
 plt.legend(['potential energy', 'kinetic energy'])
 plt.show()
-print(f"Energy error: {(energy_traj[-1] - energy_traj[0])/energy_traj.mean()*100:.5f} %")
+print(f"Energy error: {(np.max(energy_traj) - np.min(energy_traj))/energy_traj.mean()*100:.5f} %")
 
 # q: how do I save the simulated data (x_trajectory) to a file with pickle
 
@@ -67,11 +77,10 @@ print(f"Energy error: {(energy_traj[-1] - energy_traj[0])/energy_traj.mean()*100
 import pickle
 import os
 
-filename = 'simulated_cartpole_data.pickle'
+filename = 'simulated_flywheel_data.pickle'
 
 # if not os.path.exists(path_to_file):
 #     os.makedirs(path_to_file)
-
 n_dofs = x.size//2
 accelerations = np.diff(x_trajectory[:, n_dofs:], axis=0)/dt
 q = x_trajectory[:-1, :n_dofs]
