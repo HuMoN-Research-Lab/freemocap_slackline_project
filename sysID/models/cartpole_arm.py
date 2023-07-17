@@ -11,12 +11,12 @@ import numpy as np
 
 def default_params():
     params = {
-        "mass_cart": 1.0,
-        "mass_pendulum": 0.1,
-        "length_pendulum": 0.5,
+        "mass_cart": 5.0,
+        "mass_pendulum": 55,
+        "length_pendulum": 1.7,
         "gravity": 9.81,
         "spring_cart": 0.1,
-        "mass_arm": 0.2
+        "mass_arm": 10
     }
     return params
 
