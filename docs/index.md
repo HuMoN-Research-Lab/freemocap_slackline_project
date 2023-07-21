@@ -5,7 +5,7 @@ This documentation is a knowledge-base for the ongoing HuMon Research Lab study 
 
 <div class="video-container">
   <video controls>
-    <source src="https://user-images.githubusercontent.com/24758117/228618561-11e0ed58-4a15-4393-ac8b-4063404f5764.mp4" type="video/mp4">
+    <source src="https://github.com/HuMoN-Research-Lab/freemocap_slackline_project/assets/24758117/b52bf3ef-da5f-4ec8-9528-8897c29c7314" type="video/mp4">
     Your browser does not support the video tag.
   </video>
 </div>
