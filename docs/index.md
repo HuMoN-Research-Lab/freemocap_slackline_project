@@ -1,13 +1,5 @@
 # Slackline Research Project
 
-This documentation is a knowledge-base for the ongoing HuMon Research Lab study on slacklining. The study is using markerless motion capture data of slacklining to study neural control during a difficult balance task. It differs from prior research in studying the types of slacklines commonly used in the sport, rather than very short labratory models. 
+This documentation is a knowledge-base for the ongoing HuMon Research Lab study on slacklining. The study is using markerless motion capture data of slacklining to study neural control during a difficult balance task. It differs from prior research by studying the types of slacklines commonly used in the sport, rather than very short labratory models. 
 
-This documentation includes a draft of a research paper, a literature review section, and a section storing project notes. Use the menu on the left to access the different sections. 
-
-## Lit Review Notes
-
-This section contains the literature review for the project, sorted by author and date. This covers slackline specific research papers relevant to our study, as well as literature related to walking and balance in both the biomechanics and neuroscience domains. A general survey is given in **Slackline Literature Survey**, which features citations with short descriptions that cover the wide range of published slackline specific research. 
-
-## Project Notes
-
-This section contains various notes made for the project. They are not very organized, and are probably not of interest to people outside the project.
+Inspired by research into balance in bipedal walking, we use the model of a **linear inverted pendulum**. This a virtual line from the standing foot to the center of mass. We are looking at slacklining as a task of balancing this inverted pendulum, which is being pulled down by gravity whenever it is not perfectly vertical. The springy slackline moves back and forth underfoot as the slackliner uses their arms to exert a force on the pendulum.
