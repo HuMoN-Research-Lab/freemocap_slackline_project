@@ -36,6 +36,8 @@ def pendulum_arms_state_information(
     BOS_trajectories_frame_xyz: np.ndarray,
     pendulum_angle_frame: np.ndarray,
     arm_displacement_frame: np.ndarray,
+    start_frame: int,
+    end_frame: int
 ):
     '''
     Returns state information for a pendulum with arms
@@ -43,9 +45,6 @@ def pendulum_arms_state_information(
     qdot: [BOS velocity, angular velocity, arm velocity]
     qddot: [BOS acceleration, angular acceleration, arm acceleration]
     '''
-
-    start_frame = 2750
-    end_frame = 3250 
 
     BOS_frame_x = BOS_trajectories_frame_xyz[:, 0]
     print(f"Shape of BOS frame x array is: {BOS_frame_x.shape}")
@@ -113,6 +112,8 @@ def pendulum_flywheel_state_information(
     BOS_trajectories_frame_xyz: np.ndarray,
     pendulum_angle_frame: np.ndarray,
     flywheel_inertia_frame: np.ndarray,
+    start_frame: int,
+    end_frame: int
 ):
     '''
     Returns state information for a pendulum with arms
@@ -120,9 +121,6 @@ def pendulum_flywheel_state_information(
     qdot: [BOS velocity, angular velocity, flywheel velocity]
     qddot: [BOS acceleration, angular acceleration, flywheel acceleration]
     '''
-
-    start_frame = 2750
-    end_frame = 3250 
 
     BOS_frame_x = BOS_trajectories_frame_xyz[:, 0]
     print(f"Shape of BOS frame x array is: {BOS_frame_x.shape}")
@@ -191,6 +189,8 @@ def pendulum_flywheel_arms_state_information(
     pendulum_angle_frame: np.ndarray,
     flywheel_inertia_frame: np.ndarray,
     arm_displacement_frame: np.ndarray,
+    start_frame: int,
+    end_frame: int
 ):
     '''
     Returns state information for a pendulum with arms
@@ -198,9 +198,6 @@ def pendulum_flywheel_arms_state_information(
     qdot: [BOS velocity, angular velocity, flywheel velocity, arm velocity]
     qddot: [BOS acceleration, angular acceleration, flywheel acceleration, arm acceleration]
     '''
-
-    start_frame = 2750
-    end_frame = 3250 
 
     BOS_frame_x = BOS_trajectories_frame_xyz[:, 0]
     print(f"Shape of BOS frame x array is: {BOS_frame_x.shape}")
@@ -290,6 +287,10 @@ def main():
     freemocap_data_folder_path=Path(
         "/Users/philipqueen/Documents/Humon Research Lab/FreeMocap_Data"
     )
+
+    start_frame = 2750
+    end_frame = 3250 
+
     session_folder_path = freemocap_data_folder_path / session_id
     path_dict_file_name = "session_path_dict.npy"
     path_dict_file_path = session_folder_path / path_dict_file_name
@@ -313,7 +314,7 @@ def main():
 
     # Pendulum with Arms:
     state_q, state_qdot, state_qddot = pendulum_arms_state_information(
-        BOS_trajectories_frame_xyz, pendulum_angle_frame, arm_displacement_frame
+        BOS_trajectories_frame_xyz, pendulum_angle_frame, arm_displacement_frame, start_frame, end_frame
     )
     np.save(session_folder_path / "pendulum_arms_state_q.npy", state_q)
     logging.info(
@@ -330,7 +331,7 @@ def main():
 
     # Pendulum with Flywheel:
     state_q, state_qdot, state_qddot = pendulum_flywheel_state_information(
-        BOS_trajectories_frame_xyz, pendulum_angle_frame, flywheel_inertia_frame
+        BOS_trajectories_frame_xyz, pendulum_angle_frame, flywheel_inertia_frame, start_frame, end_frame
     )
     np.save(session_folder_path / "pendulum_flywheel_state_q.npy", state_q)
     logging.info(
@@ -347,7 +348,7 @@ def main():
 
     # Pendulum with Arms and Flywheel:
     state_q, state_qdot, state_qddot = pendulum_flywheel_arms_state_information(
-        BOS_trajectories_frame_xyz, pendulum_angle_frame, flywheel_inertia_frame, arm_displacement_frame
+        BOS_trajectories_frame_xyz, pendulum_angle_frame, flywheel_inertia_frame, arm_displacement_frame, start_frame, end_frame
     )
     np.save(session_folder_path / "pendulum_flywheel_arms_state_q.npy", state_q)
     logging.info(
