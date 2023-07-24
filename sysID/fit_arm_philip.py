@@ -3,9 +3,9 @@ import matplotlib.pyplot as plt
 from models import cartpole_arm as model
 
 # Load the data
-q = np.load('data/first_try/state_q.npy')
-qDot = np.load('data/first_try/state_qdot.npy')
-qDotDot = np.load('data/first_try/state_qdot.npy')
+q = np.load('/Users/philipqueen/Documents/Humon Research Lab/FreeMocap_Data/4stepsequence_session2_10_5_22/pendulum_arms_state_q.npy')
+qDot = np.load('/Users/philipqueen/Documents/Humon Research Lab/FreeMocap_Data/4stepsequence_session2_10_5_22/pendulum_arms_state_qdot.npy')
+qDotDot = np.load('/Users/philipqueen/Documents/Humon Research Lab/FreeMocap_Data/4stepsequence_session2_10_5_22/pendulum_arms_state_qddot.npy')
 
 # convert to meters
 q[:, 0] = q[:, 0]/1000.
