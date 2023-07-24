@@ -7,6 +7,7 @@ from construct_arm_displacement_frame_x import (
     calculate_arm_center_of_mass,
 )
 from construct_BOS_frame_xyz import construct_BOS_frame_xyz
+from construct_inertia_frame import construct_inertia_frame
 from session_setup_info.session_setup_info import (
     session_2_setup_dict,
     session_3_setup_dict,
@@ -87,6 +88,9 @@ class FreemocapSession:
         self.session_info_dict[
             "arm_displacement_frame_x"
         ] = construct_arm_displacement_frame_x(self.path_dict)
+        self.session_info_dict["flywheel_inertia_frame"] = construct_inertia_frame(
+            self.path_dict
+        )
 
     def save_info_dict(self, session_info_dict_file_path):
         np.save(session_info_dict_file_path, self.session_info_dict)
@@ -100,7 +104,7 @@ class FreemocapSession:
 
 
 def main():
-    session_setup_dict = session_4_setup_dict
+    session_setup_dict = session_2_setup_dict
     session_id = session_setup_dict["session_id"]
     freemocap_data_folder_path = session_setup_dict["freemocap_data_folder_path"]
     session_info = FreemocapSession(session_id, freemocap_data_folder_path)

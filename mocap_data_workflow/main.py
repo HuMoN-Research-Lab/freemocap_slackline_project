@@ -2,15 +2,19 @@ import logging
 import numpy as np
 from pathlib import Path
 
-logging.basicConfig(level = logging.INFO)
+from extract_state_information import (
+    get_state_information,
+    get_virtual_pendulum_angle_array,
+    save_state_information,
+    pendulum_arms_state_information,
+)
 
-'''Gets session data using session_read_in.py, and puts it into any processing/visualizing functions'''
+logging.basicConfig(level=logging.INFO)
 
-from extract_state_information import get_state_information, get_virtual_pendulum_angle_array, save_state_information
-from pendulum_arms_state_information import pendulum_arms_state_information
+"""Gets session data using session_read_in.py, and puts it into any processing/visualizing functions"""
+
 
 def main(session_id, freemocap_data_folder_path):
-
     session_folder_path = freemocap_data_folder_path / session_id
     path_dict_file_name = "session_path_dict.npy"
     path_dict_file_path = session_folder_path / path_dict_file_name
@@ -33,7 +37,9 @@ def main(session_id, freemocap_data_folder_path):
     # pendulum arms state information:
     BOS_trajectories_frame_xyz = session_info_dict["BOS_frame_xyz"]
     com_trajectories_frame_xyz = np.load(path_dict["total_body_COM_frame_xyz"])
-    pendulum_angle_frame = get_virtual_pendulum_angle_array(BOS_trajectories_frame_xyz, com_trajectories_frame_xyz)
+    pendulum_angle_frame = get_virtual_pendulum_angle_array(
+        BOS_trajectories_frame_xyz, com_trajectories_frame_xyz
+    )
     arm_displacement_frame = session_info_dict["arm_displacement_frame_x"]
 
     (state_q, state_qdot, state_qddot) = pendulum_arms_state_information(
@@ -51,7 +57,12 @@ def main(session_id, freemocap_data_folder_path):
     logging.info(
         f"State information succesfully extracted to {session_folder_path / 'pendulum_arms_state_qddot.npy'}"
     )
-    
+
 
 if __name__ == "__main__":
-    main(session_id = "4stepsequence_session5_10_5_22", freemocap_data_folder_path = Path("/Users/philipqueen/Documents/Humon Research Lab/FreeMocap_Data"))
+    main(
+        session_id="4stepsequence_session2_10_5_22",
+        freemocap_data_folder_path=Path(
+            "/Users/philipqueen/Documents/Humon Research Lab/FreeMocap_Data"
+        ),
+    )

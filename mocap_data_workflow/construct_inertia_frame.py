@@ -5,9 +5,9 @@ from utilities.get_euclidean_distance import get_euclidean_distance_between_arra
 
 def construct_inertia_frame(session_path_dict: dict) -> np.ndarray:
     """
-    Constructs an array of the overall inertia for each frame, calculated from the segment COM point.
+    Constructs an array of the overall moment of inertia for each frame, calculated from the segment COM point.
     
-    The inertia is given in terms of percent mass * mm^2, and must be multiplied by the subjects mass before use.
+    The moment of inertia is given in terms of percent mass * mm^2, and must be multiplied by the subjects mass before use.
     """
 
     segment_com_frame_joint_xyz = np.load(session_path_dict["segment_COM_frame_xyz"])
@@ -18,18 +18,12 @@ def construct_inertia_frame(session_path_dict: dict) -> np.ndarray:
     
     segment_inertia = np.empty((total_body_COM_frame_xyz.shape[0], len(segment_COM_percentages)))
     for i, percentage in enumerate(segment_COM_percentages):
-        print(i)
-        print(f"Percentage: {percentage}")
         distance = get_euclidean_distance_between_arrays(array_1=segment_com_frame_joint_xyz[:,i,:], array_2=total_body_COM_frame_xyz)
-        print(f"Distance: {distance}")
         segment_inertia[:, i] = percentage * distance * distance
         
-    print(segment_inertia.shape)
 
     total_inertia =  np.sum(segment_inertia, axis=1)
-    print(total_inertia)
-    print(total_inertia.shape)
-
+    print(f"Shape of total_inertia: {total_inertia.shape}")
     return total_inertia
 
 segment_COM_percentages = [
