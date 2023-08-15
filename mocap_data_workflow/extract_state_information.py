@@ -3,7 +3,8 @@ import logging
 import numpy as np
 from pathlib import Path
 
-from utilities.pendulum_angles import get_virtual_pendulum_angle, get_virtual_pendulum_angle_array
+from normalize_BOS_trajectories import normalize_BOS_trajectories
+from utilities.pendulum_angles import get_virtual_pendulum_angle_array
 from utilities.array_checks import check_arrays_have_same_shape, pad_array
 
 logging.basicConfig(level = logging.INFO)
@@ -305,6 +306,9 @@ def main():
     pendulum_angle_frame = get_virtual_pendulum_angle_array(BOS_trajectories_frame_xyz, com_trajectories_frame_xyz)
     arm_displacement_frame = session_info_dict["arm_displacement_frame_x"]
     flywheel_inertia_frame = session_info_dict["flywheel_inertia_frame"]
+
+    # comment this out if you don't want data shifted
+    normalize_BOS_trajectories(BOS_trajectories_frame_xyz, start_frame, end_frame)
 
 
     # Simple State Information: 
