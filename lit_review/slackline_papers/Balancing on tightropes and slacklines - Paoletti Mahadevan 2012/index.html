@@ -1,0 +1,1122 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Balancing%20on%20Slacklines%20Modeling%20and%20Empirical%20Evaluation%20-%20Vallery%20Neumann%202013/">
+      
+      
+        <link rel="next" href="../Improved%20postural%20control%20after%20slackline%20training%20is%20accompanied%20by%20reduced%20H-reflexes/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.3">
+    
+    
+      
+        <title>Paoletti Mahadevan 2012 - Slackline Project Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0e669242.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#paoletti-mahadevan-2012" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Slackline Project Docs" class="md-header__button md-logo" aria-label="Slackline Project Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Slackline Project Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Paoletti Mahadevan 2012
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/HuMoN-Research-Lab/freemocap_slackline_project" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Slackline Project Docs" class="md-nav__button md-logo" aria-label="Slackline Project Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Slackline Project Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/HuMoN-Research-Lab/freemocap_slackline_project" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Slackline Research Project
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Research%20Summary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Slackline Paper Outline Draft
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../exploratory_analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exploratory Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Lit review
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Lit review
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Slackline%20Literature%20Survey/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Slackline Literature Survey
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Dynamic balance and locomotion papers
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Dynamic balance and locomotion papers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dynamic_balance_and_locomotion_papers/An%20optimality%20principle%20for%20locomotor%20central%20pattern%20generators%20-%20Ryu%20Kuo%202021/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ryu Kuo 2021
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dynamic_balance_and_locomotion_papers/Control%20of%20Animal%20Locomotion%20by%20Ventral%20Spinocerebellar%20Tract%20Neurons%20-%20Chalif%20Et%20Al%202022/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chalif Et Al 2022
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dynamic_balance_and_locomotion_papers/Extrapolated%20COM%20-%20Hof%202007/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hof 2007
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dynamic_balance_and_locomotion_papers/Human%20Central%20Pattern%20Generator%20-%20Does%20it%20Exist%3F%20Minassian%202017/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Minassian Et Al 2017
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dynamic_balance_and_locomotion_papers/Humans%20plan%20for%20the%20near%20future%20to%20walk%20economically%20on%20uneven%20terrain%20-%20Darici%20Kuo%202022/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Darici Kuo 2022
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dynamic_balance_and_locomotion_papers/Measures%20to%20Determine%20Dynamic%20Balance%20-%20Niiler%202015/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Niiler 2016
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dynamic_balance_and_locomotion_papers/N-Step%20Capturability%20-%20Koolen%20Et%20Al.%202012/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Koolen Et Al. 2012
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dynamic_balance_and_locomotion_papers/Rethinking%20Margin%20of%20Stability%20-%20%23%20Kazanski%20Et%20Al%20%202022/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kazanski Et Al  2022
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dynamic_balance_and_locomotion_papers/Six%20Determinants%20and%20Inverted%20Pendulum%20-%20Kuo%202007/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kuo 2007
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dynamic_balance_and_locomotion_papers/The%20Condition%20for%20Dynamic%20Stability%20-%20Hof%20Et%20Al%202005/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hof Et Al 2005
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dynamic_balance_and_locomotion_papers/The%20Dynamics%20of%20Perception%20and%20Action/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Warren 2006
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
+        
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Slackline papers
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Slackline papers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A%20Case%20Study%20on%20Balance%20Recovery%20in%20Slacklining%20-%20Huber%20Kleindl%202010/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Huber Kleindl 2010
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../An%20LMI%20Approach%20to%20Controller%20Design%20for%20Balancing%20over%20Slackline%20-%20Iqbal%202019/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Iqbal 2019
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Balancing%20on%20Slacklines%20Modeling%20and%20Empirical%20Evaluation%20-%20Vallery%20Neumann%202013/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vallery Neumann 2013
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Paoletti Mahadevan 2012
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Paoletti Mahadevan 2012
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#key-definitions" class="md-nav__link">
+    Key Definitions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    Key Takeaways
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    Limitations
+  </a>
+  
+    <nav class="md-nav" aria-label="Limitations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steves-comments-on-the-limitations" class="md-nav__link">
+    Steve's comments on the limitations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#philips-replies" class="md-nav__link">
+    Philip's replies
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Improved%20postural%20control%20after%20slackline%20training%20is%20accompanied%20by%20reduced%20H-reflexes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keller Et. Al. 2011
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Learning%20to%20balance%20on%20a%20slackline%20-%20Mildren%20Et%20Al%202018/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mildren Et. Al. 2018
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Performance%20indicators%20for%20stability%20of%20slackline%20balancing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Stein Mombaur 2019
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Project notes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Project notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../project_notes/Prep%20Slackline%20Research%20Questions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prep Slackline Project Research Question
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../project_notes/SpringedCartAndPendulumJustification/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Springed Cart and Pendulum Justification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../project_notes/running_notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FreeMoCap Slackline Project
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#key-definitions" class="md-nav__link">
+    Key Definitions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    Key Takeaways
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    Limitations
+  </a>
+  
+    <nav class="md-nav" aria-label="Limitations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steves-comments-on-the-limitations" class="md-nav__link">
+    Steve's comments on the limitations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#philips-replies" class="md-nav__link">
+    Philip's replies
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<div><h1 id="paoletti-mahadevan-2012">Paoletti Mahadevan 2012</h1>
+<p><strong>Balancing on tightropes and slacklines</strong></p>
+<hr>
+<p><strong>Tags:</strong> #control #slackline #dynamic_balance </p>
+<hr>
+<p><strong>Related:</strong> </p>
+<hr>
+<h2 id="key-definitions">Key Definitions</h2>
+<hr>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li>Investigating rope balancing to see how the neuromechanical dynamics of the body couple with external dynamics of the reactive moving system. A key focus is understanding the ways the body is aware of or estimates its current position in space and relative to the system.</li>
+<li>They propose a simple mechanical model for the body rope system, including a "plausible" sensory motor feedback control system based on the vestibular system.<ol>
+<li>Model is a cart pole, where the tracks of the cart are circular.</li>
+<li>Humans balance by using their arms to generate torque.</li>
+<li>The scaled sag parameter determines if the line is a slackline or tight rope.</li>
+</ol>
+</li>
+<li>They analyze the linearized dynamics of their model and construct an optimal feedback controller for cases with limited information about the state space occupied.<ol>
+<li>Claim it is unlikely humans can take separate measurements to determine the full state of the system, i.e. the values and velocity of both the angular displacement of the line and the rotation of the body.</li>
+<li>The visual system can provide precise information about the orientation of the body, but at a delay slower than seems necessary to make the balance corrections needed.</li>
+<li>Claim proprioception gives inaccurate information while balancing due to movement of the feet.</li>
+<li>Given the previous two points, only vestibular (inner ear) balance seems fast and accurate enough. </li>
+<li>Assume that only accurate measurement of velocities is available for feedback control, as this can be provided by the vestibular system and is sufficient for balance</li>
+<li>Qualitative behavior of the system is relatively equivalent when allowing back in visual or proprioceptive awareness, or when varying the max producible torque by a factor of ten.</li>
+</ol>
+</li>
+<li>They are able to prove that their (linearized) model is completely controllable and observable, which means there is a non-unique feedback control strategy to stabilize the pendulum.<ol>
+<li>This linearized control strategy was then simulated on the full nonlinear model</li>
+<li>When the distance R (stand in for body position along rope length, 0 when person is at anchor, approaches 0 when person is in the middle of arbitrarily long line, and also sag) approaches 0 it can get very unstable, and near infinite R is actually stable. There is an ideal range of r, near body height, where stabilization is fast and requires very low force and energy output.</li>
+</ol>
+</li>
+<li>The final section discusses special cases and additions to the model<ol>
+<li>When mass has a large impact on sag (high stretch line), the model predictions still mostly hold.</li>
+<li><em>When sag is smaller, vertical and horizontal oscillation s are uncoupled and the rope acts more like a a spring returning the cart to center, and the motion of the cart is primarily horizontal.</em> This describes roughly how we have modeled the system.</li>
+</ol>
+</li>
+</ol>
+<hr>
+<h2 id="limitations">Limitations</h2>
+<ol>
+<li>Model only has one degree of freedom for the body, which represents large scale postural control. Smaller limb movements are explicitly ignored.</li>
+<li>Treat the rope primarily as a track for the "cart", i.e. they do not model any elastic feedback for the primary modeling</li>
+<li>Dissipation and damping are assumed to be equal to the action of torque</li>
+<li>Overestimate the reliance on vestibular control, based on experience of how much people rely on vision. They are correct it is apparently sufficient (probably plus proprioception), but not that it is the "normal" strategy</li>
+<li>Generally seems a little misguided on understanding the realities of rope balancing, i.e. the last paragraph of the appendix.</li>
+</ol>
+<h3 id="steves-comments-on-the-limitations">Steve's comments on the limitations</h3>
+<ol>
+<li>I agree, though what they do is to some extent reasonable: they do not model the flywheel explicitly, but they do still model the torque that could be exerted by the flywheel (e.g. arms). Their control input $F^\alpha$ is not representing ankle torque, but the arm torque, simply transferred down to the pivot joint. This is correct, and a much simpler model that I should also have suggested as a first pass. So, what is lost by not modeling the actual flywheel state?</li>
+<li>If you don't model the flywheel, you ignore the state of the flywheel. This is fine, if it is okay to ignore their position/velocity. But it means you cannot impose constraints on the flywheel (arm) maximum position or velocity, which I would argue is actually an important constraint. They actually talk about these points in appendix D (as you mention in point 5.). So one thing we probably want to show is that these constraints are indeed important. I think they are, though I don't know which constraint is the limiting one (or if both are). Identifying that could be interesting.</li>
+<li>Not sure that's really a significant limitation: the gravitation force they have on $R$ will be very similar to the spring force that we've modeled. I think at this level of abstraction, neither is super "faithful" to a first-principles view of the system, and to decide which is better you'd have to look at data.</li>
+<li>I didn't pick on this, where did you see that?</li>
+<li>Yeah, I also think visual vs. vestibular might be the most interesting thing to look at.</li>
+<li>can we model an estimator that uses both visual and vestibular feedback loops, each with their respecitve delays?</li>
+<li>if yes, then we could compare the feedback gains with both, vs. feedback gains with just vestibular, see if it is very different (e.g. we have two contorl inputs, flywheel and arm-CoG. If you have vision, should you rely more on keeping the CoG centered, compared to if don't?), and then validate that prediction with a real-world experiment  (e.g. blindfolded).</li>
+<li>You're the expert :)  </li>
+<li>Aside: to me it seemed that their torque upperbound is rather high, but I don't have any real reasoning behind it. Do you have better thoughts on this?  </li>
+<li>Their note in the appendix that "the qualitative behavior of the system is insensitive to the exact value for $F_{max}$$ is imho rather misleading, since they only checked for increasing this upper bound. I would guess (as discussed above) that the constraints are actually quite important, but of course if you actually enforce them, not if you relax them more.  </li>
+</ol>
+<h3 id="philips-replies">Philip's replies</h3>
+<ol>
+<li>For the case we're studying of a quite short slackline with relatively little energy I agree that the difference between the models is probably quite small. I think my preference for a spring based system is that it seems like a much more scalable model, in that it will hopefully be easier to adapt to longer lines with more stored energy. While walking/watching a line that's roughly 100m (vs 10m, say), you can feel/see the wave dynamics in the line, and the line has enough stored energy to significantly move the slackliner. So to me it seems much more promising to model some elastic element if we hope to someday understand the task more generally.</li>
+<li>It is this comment on page 2099, right before the <code>2.2 Neurobiology</code> section: "Humans use their arms or a pole to maintain balance, this corresponds to a torque Fa on the inverted pendulum. Moreover, as the angle of the cart is not controlled, we have Ff === 0. We have ignored the role of dissipation and damping in our model given its equivalence to the action of the torque Fa." I don't fully understand the relation to torque here unless they're saying that the slackliner is providing all of the damping in the system. If that's the case, on a smaller line like we've been looking at, I think that's not a bad approximation, but longer lines will have more damping.</li>
+<li>I think a blindfold test would be very interesting. I think we know that the visual system is playing a major role in real life slacklining, for example begginer advice often focuses on where you look, or just the fact that blindfolded slacklining is thought to be significantly harder. But experts are able to slackline quite well blindfolded, which seems to indicate the vestibular system is sufficient for balancing on the line. I think this could be a really fruitful path forward if we wanted to look more into the skill/expertise side of things.</li>
+<li>I'm specifically referring here to sections <code>5.1</code> and <code>5.2</code>. I mostly think there's a lot more variability in the slackline to tightrope spectrum that's hard to capture with just R and m. Maybe I don't have strong enough intuitions for the parameters yet.</li>
+<li>The torque upperbound is hard to get an intuition for, but I bet we could get some estimate from the data. I don't find the derivation from a pole to be very convincing.</li>
+<li>I agree, I would want more convincing that its only a matter of "the structural property of the dynamics, such as controllability and observability," as they say.</li>
+</ol></div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.78eede0e.min.js"></script>
+      
+    
+  </body>
+</html>
