@@ -1,3 +1,4 @@
+# Slackline Literature Survey
 
 This document aims to do an abstract level survey of the existing published research related to slacklining. It does not aim to be exhaustive of all papers, rather its purpose is to find representative papers for the different categories of paper, with a special emphasis on papers related to explaining *how* people balance on slacklines (as opposed to purported benefits of doing so). 
 
