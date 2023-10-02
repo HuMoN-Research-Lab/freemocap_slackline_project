@@ -8,6 +8,7 @@ from construct_arm_displacement_frame_x import (
 )
 from construct_BOS_frame_xyz import construct_BOS_frame_xyz
 from construct_inertia_frame import construct_inertia_frame
+from mocap_data_workflow.construct_rotation_frame import construct_rotation_frame
 from session_setup_info.session_setup_info import (
     session_2_setup_dict,
     session_3_setup_dict,
@@ -90,6 +91,10 @@ class FreemocapSession:
         ] = construct_arm_displacement_frame_x(self.path_dict)
         self.session_info_dict["flywheel_inertia_frame"] = construct_inertia_frame(
             self.path_dict
+        )
+        self.session_info_dict["flywheel_rotation_frame"] = construct_rotation_frame(
+            self.path_dict,
+            self.session_info_dict
         )
 
     def save_info_dict(self, session_info_dict_file_path):
