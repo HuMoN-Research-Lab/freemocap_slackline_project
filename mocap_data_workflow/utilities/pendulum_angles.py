@@ -2,7 +2,7 @@ import math
 
 import numpy as np
 
-from utilities.vector_utilities import get_angle_between_vectors, normalize_vector
+from utilities.vector_utilities import get_signed_angle_between_vectors, normalize_vector
 
 
 def get_virtual_pendulum_angle_array(BOS_trajectories_frame_xyz, com_trajectories_frame_xyz):
@@ -23,6 +23,6 @@ def get_virtual_pendulum_angle(base_coordinate_xyz, top_coordinate_xyz):
     normalized_pendulum_vector = normalize_vector(pendulum_line)
     normalized_vertical_vector = normalize_vector(vertical_line)
 
-    angle_between_vectors_radians = get_angle_between_vectors(normalized_vertical_vector, normalized_pendulum_vector)
+    angle_between_vectors_radians = get_signed_angle_between_vectors(normalized_vertical_vector, normalized_pendulum_vector)
     
     return math.degrees(angle_between_vectors_radians)

@@ -24,7 +24,7 @@ def get_euclidean_distance_between_arrays(
     x1, z1 = array_1[:, 0], array_1[:, 2]
     x2, z2 = array_2[:, 0], array_2[:, 2]
 
-    # Compute the 2D difference and squared difference
+    # Compute the 2D squared difference
     squared_diff_x = (x1 - x2) ** 2
     squared_diff_z = (z1 - z2) ** 2
 
