@@ -195,9 +195,9 @@ def pendulum_flywheel_arms_state_information(
 ):
     '''
     Returns state information for a pendulum with arms
-    q: [BOS location,  angle, flywheel inertia, arm displacement]
-    qdot: [BOS velocity, angular velocity, flywheel velocity, arm velocity]
-    qddot: [BOS acceleration, angular acceleration, flywheel acceleration, arm acceleration]
+    q: [BOS location,  angle, arm displacement, flywheel inertia]
+    qdot: [BOS velocity, angular velocity, arm velocity, flywheel velocity]
+    qddot: [BOS acceleration, angular acceleration, arm acceleration, flywheel acceleration]
     '''
 
     BOS_frame_x = BOS_trajectories_frame_xyz[:, 0]
@@ -250,23 +250,23 @@ def pendulum_flywheel_arms_state_information(
             [
                 BOS_frame_x[frame],
                 pendulum_angle_frame[frame],
-                flywheel_inertia_frame[frame],
                 arm_displacement_frame[frame],
+                flywheel_inertia_frame[frame],
             ]
         )
         q.append(this_frame_q)
         this_frame_qdot = np.array(
             [BOS_velocity[frame], 
             pendulum_velocity[frame], 
-            flywheel_inertia_velocity[frame], 
-            arm_velocity[frame]]
+            arm_velocity[frame],
+            flywheel_inertia_velocity[frame]]
         )
         qdot.append(this_frame_qdot)
         this_frame_qddot = np.array(
             [BOS_acceleration[frame], 
             pendulum_acceleration[frame],
-            flywheel_inertia_acceleration[frame],
-            arm_acceleration[frame]]
+            arm_acceleration[frame],
+            flywheel_inertia_acceleration[frame]]
         )
         qddot.append(this_frame_qddot)
 

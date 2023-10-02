@@ -21,15 +21,7 @@ q[:, 1] = q[:, 1]*np.pi/180.
 qDot[:, 1] = qDot[:, 1]*np.pi/180.
 qDotDot[:, 1] = qDotDot[:, 1]*np.pi/180.
 
-# convert to meters squared
-q[:, 2] = q[:, 2]/1000000.
-qDot[:, 2] = qDot[:, 2]/1000000.
-qDotDot[:, 2] = qDotDot[:, 2]/1000000.
-
-# multiply by mass to get kg/m^2
-q[:, 2] = q[:, 2] * params["mass_pendulum"]
-qDot[:, 2] = qDot[:, 2] * params["mass_pendulum"]
-qDotDot[:, 2] = qDotDot[:, 2] * params["mass_pendulum"]
+# flywheel rotation is already in radians, no need to convert
 
 # Plot the data
 fig, axs = plt.subplots(3, 1, figsize=(8, 8))

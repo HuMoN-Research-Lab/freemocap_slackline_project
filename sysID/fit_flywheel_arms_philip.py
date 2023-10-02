@@ -11,28 +11,20 @@ params = model.default_params()
 
 # convert to meters
 q[:, 0] = q[:, 0]/1000.
-q[:, 3] = q[:, 3]/1000.
+q[:, 2] = q[:, 2]/1000.
 
 qDot[:, 0] = qDot[:, 0]/1000.
-qDot[:, 3] = qDot[:, 3]/1000.
+qDot[:, 2] = qDot[:, 2]/1000.
 
 qDotDot[:, 0] = qDotDot[:, 0]/1000.
-qDotDot[:, 3] = qDotDot[:, 3]/1000.
+qDotDot[:, 2] = qDotDot[:, 2]/1000.
 
 # convert angle to radians
 q[:, 1] = q[:, 1]*np.pi/180.
 qDot[:, 1] = qDot[:, 1]*np.pi/180.
 qDotDot[:, 1] = qDotDot[:, 1]*np.pi/180.
 
-# convert to meters squared
-q[:, 2] = q[:, 2]/1000000.
-qDot[:, 2] = qDot[:, 2]/1000000.
-qDotDot[:, 2] = qDotDot[:, 2]/1000000.
-
-# multiply by mass to get kg/m^2
-q[:, 2] = q[:, 2] * params["mass_pendulum"]
-qDot[:, 2] = qDot[:, 2] * params["mass_pendulum"]
-qDotDot[:, 2] = qDotDot[:, 2] * params["mass_pendulum"]
+# flywheel rotations are already in radians, no need to convert
 
 # Plot the data
 fig, axs = plt.subplots(4, 1, figsize=(8, 8))
