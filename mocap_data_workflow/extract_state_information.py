@@ -318,15 +318,15 @@ def main():
     )
     np.save(session_folder_path / "pendulum_arms_state_q.npy", state_q)
     logging.info(
-        f"State information succesfully extracted to {session_folder_path / 'state_q.npy'}"
+        f"State information succesfully extracted to {session_folder_path / 'pendulum_arms_state_q.npy'}"
     )
     np.save(session_folder_path / "pendulum_arms_state_qdot.npy", state_qdot)
     logging.info(
-        f"State information succesfully extracted to {session_folder_path / 'state_qdot.npy'}"
+        f"State information succesfully extracted to {session_folder_path / 'pendulum_arms_state_qdot.npy'}"
     )
     np.save(session_folder_path / "pendulum_arms_state_qddot.npy", state_qddot)
     logging.info(
-        f"State information succesfully extracted to {session_folder_path / 'state_qddot.npy'}"
+        f"State information succesfully extracted to {session_folder_path / 'pendulum_arms_state_qddot.npy'}"
     )
 
     # Pendulum with Flywheel:
@@ -335,15 +335,15 @@ def main():
     )
     np.save(session_folder_path / "pendulum_flywheel_state_q.npy", state_q)
     logging.info(
-        f"State information succesfully extracted to {session_folder_path / 'state_q.npy'}"
+        f"State information succesfully extracted to {session_folder_path / 'pendulum_flywheel_state_q.npy'}"
     )
     np.save(session_folder_path / "pendulum_flywheel_state_qdot.npy", state_qdot)
     logging.info(
-        f"State information succesfully extracted to {session_folder_path / 'state_qdot.npy'}"
+        f"State information succesfully extracted to {session_folder_path / 'pendulum_flywheel_state_qdot.npy'}"
     )
     np.save(session_folder_path / "pendulum_flywheel_state_qddot.npy", state_qddot)
     logging.info(
-        f"State information succesfully extracted to {session_folder_path / 'state_qddot.npy'}"
+        f"State information succesfully extracted to {session_folder_path / 'pendulum_flywheel_state_qddot.npy'}"
     )
 
     # Pendulum with Arms and Flywheel:
@@ -352,15 +352,15 @@ def main():
     )
     np.save(session_folder_path / "pendulum_flywheel_arms_state_q.npy", state_q)
     logging.info(
-        f"State information succesfully extracted to {session_folder_path / 'state_q.npy'}"
+        f"State information succesfully extracted to {session_folder_path / 'pendulum_flywheel_arms_state_q.npy'}"
     )
     np.save(session_folder_path / "pendulum_flywheel_arms_state_qdot.npy", state_qdot)
     logging.info(
-        f"State information succesfully extracted to {session_folder_path / 'state_qdot.npy'}"
+        f"State information succesfully extracted to {session_folder_path / 'pendulum_flywheel_arms_state_qdot.npy'}"
     )
     np.save(session_folder_path / "pendulum_flywheel_arms_state_qddot.npy", state_qddot)
     logging.info(
-        f"State information succesfully extracted to {session_folder_path / 'state_qddot.npy'}"
+        f"State information succesfully extracted to {session_folder_path / 'pendulum_flywheel_arms_state_qddot.npy'}"
     )
 
 

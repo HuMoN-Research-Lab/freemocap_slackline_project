@@ -43,9 +43,9 @@ def construct_rotation_frame(
                     - segment_com_frame_joint_xyz[frame, segment_index, 2]
                 ),
             ])
-            weighted_segment_vector = segment_vector * segment_COM_percentages[segment_index] # multiply by relative weight of segment
-            segment_vector_list.append(weighted_segment_vector)
-            # segment_vector_list.append(segment_vector)
+            # weighted_segment_vector = segment_vector * segment_COM_percentages[segment_index] # multiply by relative weight of segment
+            # segment_vector_list.append(weighted_segment_vector)
+            segment_vector_list.append(segment_vector)
         this_frame_vector = np.sum(segment_vector_list, axis=0)
         normalized_frame_vector = normalize_vector(this_frame_vector)
         this_frame_angle = get_signed_angle_between_vectors(
