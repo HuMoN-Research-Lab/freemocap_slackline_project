@@ -10,13 +10,13 @@ import numpy as np
 
 def default_params():
     params = {
-        "mass_cart": 1.0,
-        "mass_pendulum": 0.1,
-        "length_pendulum": 0.5,
+        "mass_cart": 1.0, # mass pendulum * 0.14, kg, based on estimates here https://exrx.net/Kinesiology/Segments
+        "mass_pendulum": 72.6, # appoximate weight, kg
+        "length_pendulum": 1.206, # mean from data, m
         "gravity": 9.81,
-        "spring_cart": 0.1,
-        "mass_arm": 0.2,
-        "inertia_flywheel": 0.2
+        "spring_cart": 1, # this is a guess for now, is not necessarily equal to spring constant of webbing
+        "mass_arm": 7.74, # mass pendulum * 0.1066
+        "inertia_flywheel": 0.23 # average taken from sample session
     }
     return params
 

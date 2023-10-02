@@ -3,7 +3,8 @@ import logging
 import numpy as np
 from pathlib import Path
 
-from utilities.pendulum_angles import get_virtual_pendulum_angle, get_virtual_pendulum_angle_array
+from normalize_BOS_trajectories import normalize_BOS_trajectories
+from utilities.pendulum_angles import get_virtual_pendulum_angle_array
 from utilities.array_checks import check_arrays_have_same_shape, pad_array
 
 logging.basicConfig(level = logging.INFO)
@@ -194,9 +195,9 @@ def pendulum_flywheel_arms_state_information(
 ):
     '''
     Returns state information for a pendulum with arms
-    q: [BOS location,  angle, flywheel inertia, arm displacement]
-    qdot: [BOS velocity, angular velocity, flywheel velocity, arm velocity]
-    qddot: [BOS acceleration, angular acceleration, flywheel acceleration, arm acceleration]
+    q: [BOS location,  angle, arm displacement, flywheel inertia]
+    qdot: [BOS velocity, angular velocity, arm velocity, flywheel velocity]
+    qddot: [BOS acceleration, angular acceleration, arm acceleration, flywheel acceleration]
     '''
 
     BOS_frame_x = BOS_trajectories_frame_xyz[:, 0]
@@ -249,23 +250,23 @@ def pendulum_flywheel_arms_state_information(
             [
                 BOS_frame_x[frame],
                 pendulum_angle_frame[frame],
-                flywheel_inertia_frame[frame],
                 arm_displacement_frame[frame],
+                flywheel_inertia_frame[frame],
             ]
         )
         q.append(this_frame_q)
         this_frame_qdot = np.array(
             [BOS_velocity[frame], 
             pendulum_velocity[frame], 
-            flywheel_inertia_velocity[frame], 
-            arm_velocity[frame]]
+            arm_velocity[frame],
+            flywheel_inertia_velocity[frame]]
         )
         qdot.append(this_frame_qdot)
         this_frame_qddot = np.array(
             [BOS_acceleration[frame], 
             pendulum_acceleration[frame],
-            flywheel_inertia_acceleration[frame],
-            arm_acceleration[frame]]
+            arm_acceleration[frame],
+            flywheel_inertia_acceleration[frame]]
         )
         qddot.append(this_frame_qddot)
 
@@ -305,6 +306,9 @@ def main():
     pendulum_angle_frame = get_virtual_pendulum_angle_array(BOS_trajectories_frame_xyz, com_trajectories_frame_xyz)
     arm_displacement_frame = session_info_dict["arm_displacement_frame_x"]
     flywheel_inertia_frame = session_info_dict["flywheel_inertia_frame"]
+
+    # comment this out if you don't want data shifted
+    normalize_BOS_trajectories(BOS_trajectories_frame_xyz, start_frame, end_frame)
 
 
     # Simple State Information: 

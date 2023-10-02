@@ -24,6 +24,7 @@ def construct_inertia_frame(session_path_dict: dict) -> np.ndarray:
 
     total_inertia =  np.sum(segment_inertia, axis=1)
     print(f"Shape of total_inertia: {total_inertia.shape}")
+    print(f"Average total inertia: {np.mean(total_inertia)}")
     return total_inertia
 
 segment_COM_percentages = [

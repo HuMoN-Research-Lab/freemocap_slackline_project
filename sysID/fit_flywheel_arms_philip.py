@@ -1,11 +1,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from models import cartpole_arm as model
+from models import cartpole_arm_flywheel as model
 
 # Load the data
-q = np.load('data/first_try/state_q.npy')
-qDot = np.load('data/first_try/state_qdot.npy')
-qDotDot = np.load('data/first_try/state_qdot.npy')
+q = np.load('/Users/philipqueen/Documents/Humon Research Lab/FreeMocap_Data/4stepsequence_session2_10_5_22/pendulum_flywheel_arms_state_q.npy')
+qDot = np.load('/Users/philipqueen/Documents/Humon Research Lab/FreeMocap_Data/4stepsequence_session2_10_5_22/pendulum_flywheel_arms_state_qdot.npy')
+qDotDot = np.load('/Users/philipqueen/Documents/Humon Research Lab/FreeMocap_Data/4stepsequence_session2_10_5_22/pendulum_flywheel_arms_state_qddot.npy')
+
+params = model.default_params()
 
 # convert to meters
 q[:, 0] = q[:, 0]/1000.
@@ -22,8 +24,10 @@ q[:, 1] = q[:, 1]*np.pi/180.
 qDot[:, 1] = qDot[:, 1]*np.pi/180.
 qDotDot[:, 1] = qDotDot[:, 1]*np.pi/180.
 
+# flywheel rotations are already in radians, no need to convert
+
 # Plot the data
-fig, axs = plt.subplots(3, 1, figsize=(8, 8))
+fig, axs = plt.subplots(4, 1, figsize=(8, 8))
 axs[0].plot(q[:, 0], qDot[:, 0], color='orange')
 axs[0].set_xlabel('Position [m]')
 axs[0].set_ylabel('Velocity [m/s]')
@@ -35,7 +39,11 @@ axs[1].set_title('Phase Portrait: Pole 1')
 axs[2].plot(q[:, 2], qDot[:, 2], color='orange')
 axs[2].set_xlabel('Position [m]')
 axs[2].set_ylabel('Velocity [m/s]')
-axs[2].set_title('Phase Portrait: arm')
+axs[2].set_title('Phase Portrait: flywheel')
+axs[3].plot(q[:, 3], qDot[:, 3], color='orange')
+axs[3].set_xlabel('Position [m]')
+axs[3].set_ylabel('Velocity [m/s]')
+axs[3].set_title('Phase Portrait: arms')
 plt.tight_layout()
 plt.show()
 
@@ -45,7 +53,7 @@ plt.show()
 # * unknowns:
 # k: the spring coefficient of the cart
 # F_a[t]: the force applied to the arms at time t
-params = model.default_params()
+
 
 def inertial_and_coriolis_forces(params, q, qDot, qDotDot):
     f = model.mass_matrix(params, q)@qDotDot + model.coriolis(params, q, qDot)
@@ -71,7 +79,7 @@ for index in range(num_datapoints):
 K, residuals, rank, singular_values = np.linalg.lstsq(A, b, rcond=None)
 
 spring_stiffness = K[0, 0]
-arm_force_trajectory = K[1:, 0]
+flywheel_force_trajectory = K[1:, 0]
 # print(f"Feedback gains: {K.T}")
 print(f"residuals: {residuals}")
 print(f"rank: {rank}")
@@ -109,7 +117,7 @@ for index in range(num_datapoints):
 K, residuals, rank, singular_values = np.linalg.lstsq(A, b, rcond=None)
 
 spring_stiffness = K[0, 0]
-arm_feedback = K[1, 0]
+flywheel_feedback = K[1, 0]
 print(f"Feedback gains: {K.T}")
 print(f"residuals: {residuals}")
 print(f"rank: {rank}")
@@ -129,7 +137,7 @@ n_dof = q.shape[1]
 # let's add the feedback law to the params
 feedback_gain = np.zeros((n_dof, 2*n_dof))
 feedback_gain[0, 0] = spring_stiffness
-feedback_gain[2, 0] = arm_feedback
+feedback_gain[2, 0] = flywheel_feedback
 params["feedback_gain"] = feedback_gain
 
 # * now let's simulate it
@@ -147,7 +155,7 @@ t = np.linspace(0, sim_time, timesteps)
 x_trajectory = np.array(rk4(model.dxdt, x0, t, params))
 
 # # Plot actual data first
-fig, axs = plt.subplots(3, 1, figsize=(8, 8))
+fig, axs = plt.subplots(4, 1, figsize=(8, 8))
 axs[0].plot(q[:, 0], qDot[:, 0], color='orange')
 axs[0].plot(x_trajectory[:, 0], x_trajectory[:, 3], color='blue')
 axs[0].set_xlabel('Position [m]')
@@ -164,7 +172,13 @@ axs[2].plot(q[:, 2], qDot[:, 2], color='orange')
 axs[2].plot(x_trajectory[:, 2], x_trajectory[:, 5], color='blue')
 axs[2].set_xlabel('Position [m]')
 axs[2].set_ylabel('Velocity [m/s]')
-axs[2].set_title('Phase Portrait: arm')
+axs[2].set_title('Phase Portrait: flywheel')
+
+axs[3].plot(q[:, 3], qDot[:, 3], color='orange')
+axs[3].plot(x_trajectory[:, 3], x_trajectory[:, 6], color='blue')
+axs[3].set_xlabel('Position [m]')
+axs[3].set_ylabel('Velocity [m/s]')
+axs[3].set_title('Phase Portrait: arms')
 plt.tight_layout()
 plt.show()
 
