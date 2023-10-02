@@ -2,6 +2,7 @@ from pathlib import Path
 import numpy as np
 
 from utilities.get_euclidean_distance import get_euclidean_distance_between_arrays
+from utilities.com_values import segment_COM_percentages
 
 def construct_inertia_frame(session_path_dict: dict) -> np.ndarray:
     """
@@ -26,22 +27,6 @@ def construct_inertia_frame(session_path_dict: dict) -> np.ndarray:
     print(f"Shape of total_inertia: {total_inertia.shape}")
     return total_inertia
 
-segment_COM_percentages = [
-    0.081,
-    0.497,
-    0.028,
-    0.028,
-    0.016,
-    0.016,
-    0.006,
-    0.006,
-    0.1,
-    0.1,
-    0.0465,
-    0.0465,
-    0.0145,
-    0.0145,
-]
 
 if __name__ == "__main__":
     session_id = "4stepsequence_session2_10_5_22"

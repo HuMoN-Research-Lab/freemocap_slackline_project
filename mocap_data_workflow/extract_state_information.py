@@ -111,13 +111,13 @@ def pendulum_arms_state_information(
 def pendulum_flywheel_state_information(
     BOS_trajectories_frame_xyz: np.ndarray,
     pendulum_angle_frame: np.ndarray,
-    flywheel_inertia_frame: np.ndarray,
+    flywheel_rotation_frame: np.ndarray,
     start_frame: int,
     end_frame: int
 ):
     '''
     Returns state information for a pendulum with arms
-    q: [BOS location,  angle, flywheel inertia]
+    q: [BOS location,  angle, flywheel rotation]
     qdot: [BOS velocity, angular velocity, flywheel velocity]
     qddot: [BOS acceleration, angular acceleration, flywheel acceleration]
     '''
@@ -135,8 +135,8 @@ def pendulum_flywheel_state_information(
     pendulum_acceleration = np.diff(pad_array(pendulum_velocity))
     print(f"Shape of pendulum acceleration array is: {pendulum_acceleration.shape}")
 
-    print(f"Shape of flywheel inertia array is: {flywheel_inertia_frame.shape}")
-    flywheel_inertia_velocity = np.diff(pad_array(flywheel_inertia_frame))
+    print(f"Shape of flywheel inertia array is: {flywheel_rotation_frame.shape}")
+    flywheel_inertia_velocity = np.diff(pad_array(flywheel_rotation_frame))
     print(f"Shape of flywheel velocity array is: {flywheel_inertia_velocity.shape}")
     flywheel_inertia_acceleration = np.diff(pad_array(flywheel_inertia_velocity))
     print(f"Shape of flywheel acceleration array is: {flywheel_inertia_acceleration.shape}")
@@ -149,7 +149,7 @@ def pendulum_flywheel_state_information(
             pendulum_angle_frame,
             pendulum_velocity,
             pendulum_acceleration,
-            flywheel_inertia_frame,
+            flywheel_rotation_frame,
             flywheel_inertia_velocity,
             flywheel_inertia_acceleration,
         ]
@@ -163,7 +163,7 @@ def pendulum_flywheel_state_information(
             [
                 BOS_frame_x[frame],
                 pendulum_angle_frame[frame],
-                flywheel_inertia_frame[frame],
+                flywheel_rotation_frame[frame],
             ]
         )
         q.append(this_frame_q)
@@ -187,14 +187,14 @@ def pendulum_flywheel_state_information(
 def pendulum_flywheel_arms_state_information(
     BOS_trajectories_frame_xyz: np.ndarray,
     pendulum_angle_frame: np.ndarray,
-    flywheel_inertia_frame: np.ndarray,
+    flywheel_rotation_frame: np.ndarray,
     arm_displacement_frame: np.ndarray,
     start_frame: int,
     end_frame: int
 ):
     '''
     Returns state information for a pendulum with arms
-    q: [BOS location,  angle, flywheel inertia, arm displacement]
+    q: [BOS location,  angle, flywheel rotation, arm displacement]
     qdot: [BOS velocity, angular velocity, flywheel velocity, arm velocity]
     qddot: [BOS acceleration, angular acceleration, flywheel acceleration, arm acceleration]
     '''
@@ -212,8 +212,8 @@ def pendulum_flywheel_arms_state_information(
     pendulum_acceleration = np.diff(pad_array(pendulum_velocity))
     print(f"Shape of pendulum acceleration array is: {pendulum_acceleration.shape}")
 
-    print(f"Shape of flywheel inertia array is: {flywheel_inertia_frame.shape}")
-    flywheel_inertia_velocity = np.diff(pad_array(flywheel_inertia_frame))
+    print(f"Shape of flywheel inertia array is: {flywheel_rotation_frame.shape}")
+    flywheel_inertia_velocity = np.diff(pad_array(flywheel_rotation_frame))
     print(f"Shape of flywheel velocity array is: {flywheel_inertia_velocity.shape}")
     flywheel_inertia_acceleration = np.diff(pad_array(flywheel_inertia_velocity))
     print(f"Shape of flywheel acceleration array is: {flywheel_inertia_acceleration.shape}")
@@ -232,7 +232,7 @@ def pendulum_flywheel_arms_state_information(
             pendulum_angle_frame,
             pendulum_velocity,
             pendulum_acceleration,
-            flywheel_inertia_frame,
+            flywheel_rotation_frame,
             flywheel_inertia_velocity,
             flywheel_inertia_acceleration,
             arm_displacement_frame,
@@ -249,7 +249,7 @@ def pendulum_flywheel_arms_state_information(
             [
                 BOS_frame_x[frame],
                 pendulum_angle_frame[frame],
-                flywheel_inertia_frame[frame],
+                flywheel_rotation_frame[frame],
                 arm_displacement_frame[frame],
             ]
         )
@@ -304,7 +304,7 @@ def main():
     com_trajectories_frame_xyz = np.load(path_dict["total_body_COM_frame_xyz"])
     pendulum_angle_frame = get_virtual_pendulum_angle_array(BOS_trajectories_frame_xyz, com_trajectories_frame_xyz)
     arm_displacement_frame = session_info_dict["arm_displacement_frame_x"]
-    flywheel_inertia_frame = session_info_dict["flywheel_inertia_frame"]
+    flywheel_rotation_frame = session_info_dict["flywheel_rotation_frame"]
 
 
     # Simple State Information: 
@@ -318,49 +318,49 @@ def main():
     )
     np.save(session_folder_path / "pendulum_arms_state_q.npy", state_q)
     logging.info(
-        f"State information succesfully extracted to {session_folder_path / 'state_q.npy'}"
+        f"State information succesfully extracted to {session_folder_path / 'pendulum_arms_state_q.npy'}"
     )
     np.save(session_folder_path / "pendulum_arms_state_qdot.npy", state_qdot)
     logging.info(
-        f"State information succesfully extracted to {session_folder_path / 'state_qdot.npy'}"
+        f"State information succesfully extracted to {session_folder_path / 'pendulum_arms_state_qdot.npy'}"
     )
     np.save(session_folder_path / "pendulum_arms_state_qddot.npy", state_qddot)
     logging.info(
-        f"State information succesfully extracted to {session_folder_path / 'state_qddot.npy'}"
+        f"State information succesfully extracted to {session_folder_path / 'pendulum_arms_state_qddot.npy'}"
     )
 
     # Pendulum with Flywheel:
     state_q, state_qdot, state_qddot = pendulum_flywheel_state_information(
-        BOS_trajectories_frame_xyz, pendulum_angle_frame, flywheel_inertia_frame, start_frame, end_frame
+        BOS_trajectories_frame_xyz, pendulum_angle_frame, flywheel_rotation_frame, start_frame, end_frame
     )
     np.save(session_folder_path / "pendulum_flywheel_state_q.npy", state_q)
     logging.info(
-        f"State information succesfully extracted to {session_folder_path / 'state_q.npy'}"
+        f"State information succesfully extracted to {session_folder_path / 'pendulum_flywheel_state_q.npy'}"
     )
     np.save(session_folder_path / "pendulum_flywheel_state_qdot.npy", state_qdot)
     logging.info(
-        f"State information succesfully extracted to {session_folder_path / 'state_qdot.npy'}"
+        f"State information succesfully extracted to {session_folder_path / 'pendulum_flywheel_state_qdot.npy'}"
     )
     np.save(session_folder_path / "pendulum_flywheel_state_qddot.npy", state_qddot)
     logging.info(
-        f"State information succesfully extracted to {session_folder_path / 'state_qddot.npy'}"
+        f"State information succesfully extracted to {session_folder_path / 'pendulum_flywheel_state_qddot.npy'}"
     )
 
     # Pendulum with Arms and Flywheel:
     state_q, state_qdot, state_qddot = pendulum_flywheel_arms_state_information(
-        BOS_trajectories_frame_xyz, pendulum_angle_frame, flywheel_inertia_frame, arm_displacement_frame, start_frame, end_frame
+        BOS_trajectories_frame_xyz, pendulum_angle_frame, flywheel_rotation_frame, arm_displacement_frame, start_frame, end_frame
     )
     np.save(session_folder_path / "pendulum_flywheel_arms_state_q.npy", state_q)
     logging.info(
-        f"State information succesfully extracted to {session_folder_path / 'state_q.npy'}"
+        f"State information succesfully extracted to {session_folder_path / 'pendulum_flywheel_arms_state_q.npy'}"
     )
     np.save(session_folder_path / "pendulum_flywheel_arms_state_qdot.npy", state_qdot)
     logging.info(
-        f"State information succesfully extracted to {session_folder_path / 'state_qdot.npy'}"
+        f"State information succesfully extracted to {session_folder_path / 'pendulum_flywheel_arms_state_qdot.npy'}"
     )
     np.save(session_folder_path / "pendulum_flywheel_arms_state_qddot.npy", state_qddot)
     logging.info(
-        f"State information succesfully extracted to {session_folder_path / 'state_qddot.npy'}"
+        f"State information succesfully extracted to {session_folder_path / 'pendulum_flywheel_arms_state_qddot.npy'}"
     )
 
 

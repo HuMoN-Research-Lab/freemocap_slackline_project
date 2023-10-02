@@ -1,5 +1,5 @@
 import numpy as np
-from extract_state_information import normalize_vector
+from utilities.vector_utilities import normalize_vector
 
 def test_unit_vector():
     assert np.linalg.norm(normalize_vector([1]) == 1)
