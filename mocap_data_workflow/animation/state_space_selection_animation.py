@@ -103,7 +103,7 @@ class SlackAnimation:
         self.fig.suptitle('Slackline Center of Mass and Base of Support')
 
     def create_subplot1(self):
-        self.ax1 = self.fig.add_subplot(self.spec[0, 0])
+        self.ax1 = self.fig.add_subplot(self.spec[0:5, 0:4])
 
         self.ax1.set_title("3d Animation")
         self.ax1.xaxis.set_visible(False) #turn off axis ticks and tick labels for video
@@ -133,7 +133,7 @@ class SlackAnimation:
         self.relative_COM_trace, = self.ax2.plot(self.relative_COM_frame_x,self.frame_index_list, color="green")
 
     def create_subplot3(self):
-        self.ax3 = self.fig.add_subplot(self.spec[0, 4])
+        self.ax3 = self.fig.add_subplot(self.spec[0:5, 4:])
         self.ax3.set_title("Mediapipe Video")
         self.ax3.xaxis.set_visible(False) #turn off axis ticks and tick labels for video
         self.ax3.yaxis.set_visible(False)
