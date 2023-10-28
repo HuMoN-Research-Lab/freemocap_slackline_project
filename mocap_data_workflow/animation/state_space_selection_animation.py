@@ -48,7 +48,6 @@ class SlackAnimation:
         synced_videos_path = self.session_folder_path / "SyncedVideos"
         video_name = "synced_Cam" + str(camera) + ".MP4"
         COM_video_name = "synced_Cam" + str(camera) + "_skeleton.MP4"
-        video_path = synced_videos_path / video_name
         self.COM_video_path = self.session_folder_path / COM_video_name 
         skeleton_video_name = "simple_skeleton_animation.mp4"
         self.skeleton_video_path = self.session_folder_path / skeleton_video_name
@@ -56,10 +55,11 @@ class SlackAnimation:
         # get COM data for points we're particularly interested in
         self.Rfoot_COM_frame_xyz = self.segment_com_frame_joint_xyz[:,12,:]
         self.Lfoot_COM_frame_xyz = self.segment_com_frame_joint_xyz[:,13,:]
+        self.Rfoot_COM_frame_x = self.Rfoot_COM_frame_xyz[:,0]
+        self.Lfoot_COM_frame_x = self.Lfoot_COM_frame_xyz[:,0]
 
         # set length of traces in frames
-        self.BOS_trace_length = 100 # frames
-        self.state_space_trace_length = 50 # frames
+        self.BOS_trace_length = 200 # frames
 
         # create base of support data based on which foot I'm standing on
         # TODO: change this to read in from session
@@ -88,10 +88,6 @@ class SlackAnimation:
 
     def initialize_figure(self):
         self.fig = plt.figure(constrained_layout=True)
-        #if self.save_video:
-        #    self.fig.set_size_inches(18, 21)
-        #else:
-        #    self.fig.set_size_inches(6, 7)
         self.fig.set_size_inches(12,8)
         if self.save_video:
             self.fig.set_dpi(1000)
@@ -115,25 +111,32 @@ class SlackAnimation:
         self.ax2 = self.fig.add_subplot(self.spec[5, :]) # this spans two columns
 
         self.ax2.set_title("Base of Support Position")
-        self.ax2.set_xlim(self.plotmin, self.plotmax) 
-        self.ax2.set_ylim(-100, 100)
-        self.ax2.set_xlabel("Distance (mm)")
-        self.ax2.set_ylabel("Frames")
+        self.ax2.set_xlim(-self.BOS_trace_length, self.BOS_trace_length)
+        self.ax2.set_ylim(self.plotmin, self.plotmax) 
+        self.ax2.set_xlabel("Frames")
+        self.ax2.set_ylabel("Distance (mm)")
+
 
         # create second set of line graphs to show active trace
         self.frame_index_list = range(0, self.data_length)
 
-        self.scatter_relative_COM = self.ax2.scatter(0, 0, s=325, color="green", marker="*", label="COM - BOS") 
+        self.scatter_right_foot = self.ax2.scatter(0, 0, s=325, color="red", marker=".")
+        self.scatter_left_foot = self.ax2.scatter(0, 0, s=325, color="green", marker=".")
+
 
         # create vertical center line that will track total body COM
-        self.BOS_center_line = self.ax2.axvline(0, ls='-', color='purple', lw=1, zorder=10, label="Base of Support")
+        self.BOS_center_line = self.ax2.axhline(0, ls='-', color='purple', lw=1, zorder=10)
 
         #create plots and trace plots for relative COM animation
-        self.plot_relative_COM, = self.ax2.plot(self.relative_COM_frame_x,self.frame_index_list, color="lightgreen")
-        self.relative_COM_trace, = self.ax2.plot(self.relative_COM_frame_x,self.frame_index_list, color="green")
+        self.right_foot, = self.ax2.plot(self.frame_index_list, self.Rfoot_COM_frame_x, color="lightsalmon")
+        self.right_foot_trace, = self.ax2.plot(self.frame_index_list, self.Rfoot_COM_frame_x, color="red", label="Right Foot")
+        self.left_foot, = self.ax2.plot(self.frame_index_list, self.Lfoot_COM_frame_x, color="lightgreen")
+        self.left_foot_trace, = self.ax2.plot(self.frame_index_list, self.Lfoot_COM_frame_x, color="green", label="Left Foot")
+        self.BOS, = self.ax2.plot(self.frame_index_list, self.BOS_frame_x, color="lightgrey", alpha=0.8)
+        self.BOS_trace, = self.ax2.plot(self.frame_index_list, self.BOS_frame_x, color="grey", alpha=0.8, label="Base of Support")
 
     def create_subplot3(self):
-        self.ax3 = self.fig.add_subplot(self.spec[0:5, 4:])
+        self.ax3 = self.fig.add_subplot(self.spec[0:5, 4:7])
         self.ax3.set_title("Mediapipe Video")
         self.ax3.xaxis.set_visible(False) #turn off axis ticks and tick labels for video
         self.ax3.yaxis.set_visible(False)
@@ -143,19 +146,27 @@ class SlackAnimation:
     def create_subplot4(self):
         self.ax4 = self.fig.add_subplot(self.spec[6, :]) # this spans two columns
 
-        self.ax4.set_title("State Space")
+        self.ax4.set_title("Base of Support Position")
+        self.ax4.set_xlim(-self.BOS_trace_length, self.BOS_trace_length)
+        self.ax4.set_ylim(self.plotmin / 2, self.plotmax / 2) 
+        self.ax4.set_xlabel("Frames")
+        self.ax4.set_ylabel("Distance (mm)")
 
-        self.ax4.set_xlim(-50, 50)
-        self.ax4.set_ylim(-10, 10)
-        self.ax4.set_xlabel("Distance (mm)")
-        self.ax4.set_ylabel("Velocity")
+        # create second set of line graphs to show active trace
+        self.frame_index_list = range(0, self.data_length)
 
-        #! this needs to be changed for each video
-        self.plot_state_space_shadow, = self.ax4.plot(self.relative_COM_frame_x[self.starting_frame:self.ending_frame], self.relative_COM_frame_x_velocity[self.starting_frame:self.ending_frame], zorder=1, color="plum")
-        self.state_space_center_line = self.ax4.axvline(0, ls='-', color='black', lw=1, zorder=1, label="Base of Support")
-        self.plot_state_space_trace, = self.ax4.plot(self.relative_COM_frame_x[0], self.relative_COM_frame_x_velocity[0], zorder=2, color="purple")
-        self.scatter_state_space = self.ax4.scatter(self.relative_COM_frame_x[0], self.relative_COM_frame_x_velocity[0], zorder=3, color="purple")
-        
+        self.scatter_relative_COM = self.ax4.scatter(0, 0, s=325, color="green", marker="*", label="COM - BOS") 
+
+        # create vertical center line that will track total body COM
+        self.BOS_center_line = self.ax4.axhline(0, ls='-', color='black', lw=1, zorder=10)
+
+        #create plots and trace plots for relative COM animation
+        self.plot_relative_COM, = self.ax4.plot(self.frame_index_list, self.relative_COM_frame_x, color="lightgreen")
+        self.relative_COM_trace, = self.ax4.plot(self.frame_index_list, self.relative_COM_frame_x, color="green")
+
+        self.plot_bos, = self.ax4.plot(self.frame_index_list, self.BOS_frame_x, color="plum")
+        self.plot_bos_trace, = self.ax4.plot(self.frame_index_list, self.BOS_frame_x, color="violet", label="Base of Support")
+
 
     def setup_video_captures(self):
         # setup video captures
@@ -180,8 +191,7 @@ class SlackAnimation:
         skeleton_ret, skeleton_frame = self.skeleton_cap.read() #getting an image from feed, 'frame' is our video feed variable
         if skeleton_ret:
             skeleton_image = cv2.cvtColor(skeleton_frame, cv2.COLOR_BGR2RGBA) #recolor image into the RGB format (for matplotlib)
-            cropped_skeleton_image =  skeleton_image[100:-150,200:-50]
-            self.ax1.imshow(cropped_skeleton_image)
+            self.ax1.imshow(skeleton_image)
 
         # display mediapipe video in top right subplot
         self.ax3.clear()
@@ -190,26 +200,32 @@ class SlackAnimation:
             mediapipe_image = cv2.cvtColor(mediapipe_frame, cv2.COLOR_BGR2RGBA) #recolor image into the RGB format (for matplotlib)
             cropped_mediapipe_image = mediapipe_image[:1900,500:3350] #[700:1900,1000:2850]
             self.ax3.imshow(cropped_mediapipe_image)
-
-            
+   
         # update COM and foot point data for frame
-        self.scatter_relative_COM.set_offsets((self.relative_COM_frame_x[i],i))
-        self.scatter_state_space.set_offsets((self.relative_COM_frame_x[i], self.relative_COM_frame_x_velocity[i]))
+        self.scatter_relative_COM.set_offsets((i, self.relative_COM_frame_x[i]))
+        self.scatter_right_foot.set_offsets((i, self.Rfoot_COM_frame_x[i]))
+        self.scatter_left_foot.set_offsets((i, self.Lfoot_COM_frame_x[i]))
 
         # update data in trace plots for new frame
-        self.relative_COM_trace.set_xdata(self.relative_COM_frame_x[i-self.BOS_trace_length:i+1])
-        self.relative_COM_trace.set_ydata(self.frame_index_list[i-self.BOS_trace_length:i+1])
-        self.plot_state_space_trace.set_xdata(self.relative_COM_frame_x[i-self.state_space_trace_length:i+1])
-        self.plot_state_space_trace.set_ydata(self.relative_COM_frame_x_velocity[i-self.state_space_trace_length:i+1])
+        self.right_foot_trace.set_xdata(self.frame_index_list[i-self.BOS_trace_length:i+1])
+        self.right_foot_trace.set_ydata(self.Rfoot_COM_frame_x[i-self.BOS_trace_length:i+1])
+        self.left_foot_trace.set_xdata(self.frame_index_list[i-self.BOS_trace_length:i+1])
+        self.left_foot_trace.set_ydata(self.Lfoot_COM_frame_x[i-self.BOS_trace_length:i+1])
+        self.BOS_trace.set_xdata(self.frame_index_list[i-self.BOS_trace_length:i+1])
+        self.BOS_trace.set_ydata(self.BOS_frame_x[i-self.BOS_trace_length:i+1])
+        self.relative_COM_trace.set_xdata(self.frame_index_list[i-self.BOS_trace_length:i+1])
+        self.relative_COM_trace.set_ydata(self.relative_COM_frame_x[i-self.BOS_trace_length:i+1])
+        self.plot_bos_trace.set_xdata(self.frame_index_list[i-self.BOS_trace_length:i+1])
+        self.plot_bos_trace.set_ydata(self.BOS_frame_x[i-self.BOS_trace_length:i+1])
 
         # set moving axis to show BOS_trace_length frames of time on either side
-        self.ax2.set_ylim(i-self.BOS_trace_length, i+self.BOS_trace_length)
+        self.ax2.set_xlim(i-self.BOS_trace_length, i+self.BOS_trace_length)
+        self.ax4.set_xlim(i-self.BOS_trace_length, i+self.BOS_trace_length)
 
-        # update vertical line x position for frame to track total COM
-        #self.vert_line.set_xdata((0,0))
 
     def run_animation(self):
         self.ax2.legend(loc = 'upper right', fontsize = 'medium')
+        self.ax4.legend(loc = 'upper right', fontsize = 'medium')
         self.anim = FuncAnimation(self.fig, func=self.animation_frame, frames=np.arange(self.starting_frame, self.ending_frame, 1), interval=self.frame_interval, save_count=(self.ending_frame-self.starting_frame))
 
 def main():
@@ -221,6 +237,7 @@ def main():
         animation_path = slack_animation.session_folder_path / animation_name
         video_writer = animation.FFMpegWriter(fps=60, bitrate=-1)
         slack_animation.anim.save(str(animation_path), writer=video_writer)
+        print(f"animation saved to {str(animation_path)}")
 
     else:
         plt.show()
